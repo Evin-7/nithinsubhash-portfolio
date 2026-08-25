@@ -26,6 +26,17 @@
 
       <div class="hero-shell site-container">
         <div class="hero-copy">
+          <div class="hero-profile">
+            <img
+              class="hero-profile-image"
+              :src="nithinProfile"
+              alt="Nithin Subhash"
+            />
+            <div class="hero-profile-copy">
+              <strong>Nithin Subhash</strong>
+              <span>UI/UX designer</span>
+            </div>
+          </div>
           <p class="hero-eyebrow">
             <span></span>UI/UX designer / digital experiences
           </p>
@@ -156,6 +167,7 @@
 
 <script setup>
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import nithinProfile from "../assets/images/nithin/nithin-profile.jpg";
 
 const hero = ref(null);
 const sceneEnabled = ref(false);
@@ -571,6 +583,45 @@ const resetPointer = () => {
   z-index: 2;
   top: clamp(1rem, 2.5vw, 2.25rem);
   max-width: 43rem;
+}
+
+.hero-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.78rem;
+  margin-bottom: 1.45rem;
+  animation: soft-rise 700ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+}
+
+.hero-profile-image {
+  width: 4.25rem;
+  height: 4.25rem;
+  flex: 0 0 auto;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 0.35rem rgba(205, 249, 125, 0.08),
+    0 0.75rem 1.8rem rgba(0, 0, 0, 0.28);
+}
+
+.hero-profile-copy {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.hero-profile-copy strong {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hero-profile-copy span {
+  color: var(--gold-light);
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .hero-visual-scroll {
