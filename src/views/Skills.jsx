@@ -1,5 +1,4 @@
 import {
-  SiChatbot,
   SiCss,
   SiFigma,
   SiFramer,
@@ -7,25 +6,32 @@ import {
   SiLottiefiles,
   SiReact,
 } from "react-icons/si";
+import { Icon as IconifyIcon } from "@iconify/react";
+import { icons as logoCollection } from "@iconify-json/logos";
 
 const skills = [
   { name: "Figma", slug: "figma", icon: SiFigma },
-  { name: "Adobe XD", slug: "adobe-xd" },
+  { name: "Adobe XD", slug: "adobe-xd", icon: logoCollection.icons["adobe-xd"] },
   { name: "HTML", slug: "html", icon: SiHtml5 },
   { name: "CSS", slug: "css", icon: SiCss },
   { name: "Framer", slug: "framer", icon: SiFramer },
-  { name: "ChatGPT", slug: "chatgpt", icon: SiChatbot },
+  { name: "ChatGPT", slug: "chatgpt", icon: logoCollection.icons.openai },
   { name: "Lottie Files", slug: "lottie", icon: SiLottiefiles },
-  { name: "Adobe Illustrator", slug: "illustrator" },
+  { name: "Adobe Illustrator", slug: "illustrator", icon: logoCollection.icons["adobe-illustrator"] },
   { name: "React", slug: "react", icon: SiReact },
 ];
 
-function SkillIcon({ Icon, name }) {
-  if (!Icon) {
+function SkillIcon({ icon, name }) {
+  if (!icon) {
     return <span className="skill-fallback-icon" aria-hidden="true">{name.slice(0, 2)}</span>;
   }
 
-  return <Icon className="skill-icon" aria-label={`${name} icon`} role="img" />;
+  if (typeof icon === "function") {
+    const IconComponent = icon;
+    return <IconComponent className="skill-icon" aria-label={`${name} icon`} role="img" />;
+  }
+
+  return <IconifyIcon icon={icon} className="skill-icon" aria-label={`${name} icon`} role="img" />;
 }
 
 export default function Skills() {
@@ -48,7 +54,7 @@ export default function Skills() {
                   {skills.map(({ name, slug, icon }) => (
                     <div key={`${copy}-${name}`} className="skill-pill" role="listitem">
                       <span className={`skill-mark skill-mark-${slug}`}>
-                        <SkillIcon Icon={icon} name={name} />
+                        <SkillIcon icon={icon} name={name} />
                       </span>
                       <span>{name}</span>
                     </div>
