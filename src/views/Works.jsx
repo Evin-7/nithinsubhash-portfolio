@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import agsyba from "../assets/images/nithin/agsyba.png";
 import abezauto from "../assets/images/nithin/abezauto.png";
 import call2day from "../assets/images/nithin/call2day.png";
@@ -132,28 +132,6 @@ export default function Works() {
   const reducedMotion = useReducedMotion();
   const motionEnabled = reducedMotion !== true;
 
-  useEffect(() => {
-    const cards = worksSection.current?.querySelectorAll(".work-card");
-    if (!cards?.length) return undefined;
-
-    const revealAllCards = () => cards.forEach((card) => card.classList.add("is-revealed"));
-    if (!motionEnabled || !("IntersectionObserver" in window)) {
-      revealAllCards();
-      return undefined;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-revealed");
-        observer.unobserve(entry.target);
-      }),
-      { rootMargin: "0px 0px -8%", threshold: 0.12 }
-    );
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, [motionEnabled]);
-
   const handleEnter = (event) => {
     if (!motionEnabled) return;
     const card = event.currentTarget;
@@ -188,7 +166,7 @@ export default function Works() {
   };
 
   return (
-    <section ref={worksSection} className={`works${motionEnabled ? " motion-ready" : ""}`}>
+    <section ref={worksSection} className="works">
       <div className="works-shell site-container">
         <div className="works-heading">
           <div><p className="works-eyebrow">Projects</p><h2 className="works-title">Selected work.</h2></div>
@@ -202,10 +180,14 @@ export default function Works() {
             </div>
             <div className="works-grid">
               {group.items.map((work, index) => (
-                <article
+                <motion.article
                   key={work.name}
                   className="work-card interactive"
                   style={{ "--reveal-delay": `${index * 55}ms` }}
+                  initial={motionEnabled ? { opacity: 0, y: 36, filter: "blur(7px)" } : false}
+                  whileInView={motionEnabled ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
+                  viewport={{ once: true, amount: 0.18 }}
+                  transition={{ duration: 0.72, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
                   onPointerEnter={handleEnter}
                   onPointerMove={handleMove}
                   onPointerLeave={resetMove}
@@ -236,7 +218,7 @@ export default function Works() {
                       </div>
                     </div>
                   </div>
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>

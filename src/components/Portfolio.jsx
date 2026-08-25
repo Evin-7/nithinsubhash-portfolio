@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "framer-motion";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import ScrollProgress from "./ScrollProgress";
@@ -18,13 +18,13 @@ function ScrollSection({ children, id }) {
   return (
     <motion.div
       id={id}
-      initial={reduceMotion ? false : { opacity: 0, y: 34 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 42, filter: "blur(8px)" }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.14 }}
       transition={
         reduceMotion
           ? { duration: 0 }
-          : { duration: 0.72, ease: [0.22, 1, 0.36, 1] }
+          : { duration: 0.82, ease: [0.22, 1, 0.36, 1] }
       }
     >
       {children}

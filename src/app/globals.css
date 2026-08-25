@@ -3528,29 +3528,6 @@ body {
   font-weight: 700;
 }
 
-.motion-ready .work-card {
-  opacity: 0;
-  translate: 0 2rem;
-}
-
-.motion-ready .work-card.is-revealed {
-  animation: work-card-reveal 760ms cubic-bezier(0.2, 0.78, 0.25, 1)
-    var(--reveal-delay) both;
-}
-
-@keyframes work-card-reveal {
-  from {
-    opacity: 0;
-    translate: 0 2rem;
-    filter: blur(5px);
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-    filter: blur(0);
-  }
-}
-
 @media (hover: hover) and (pointer: fine) {
   .work-card:hover {
     border-color: var(--gold);
@@ -3656,12 +3633,6 @@ body {
 }
 
 @media (hover: none), (pointer: coarse), (max-width: 768px) {
-  .motion-ready .work-card {
-    opacity: 1;
-    translate: none;
-    animation: none;
-  }
-
   .work-card {
     transform: none;
   }
@@ -3673,17 +3644,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .works-heading,
-  .motion-ready .work-card.is-revealed {
-    animation: none;
-  }
-
-  .motion-ready .work-card {
-    opacity: 1;
-    translate: none;
-    filter: none;
-  }
-
   .work-card,
   .work-card::before,
   .work-card::after,
