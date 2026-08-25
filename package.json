@@ -1,0 +1,23 @@
+{
+  "name": "evin-portfolio-full",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "motion-v": "^2.3.0",
+    "rellax": "^1.12.1",
+    "simple-icons": "^16.28.0",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.2.0"
+  }
+}
