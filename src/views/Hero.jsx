@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import nithinProfile from "../assets/images/nithin/nithin-profile.jpg";
 
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 const smoothstep = (value) => value * value * (3 - 2 * value);
@@ -118,10 +116,6 @@ export default function Hero() {
 
         <div className="hero-shell site-container">
           <div className="hero-copy">
-            <div className="hero-profile">
-              <Image className="hero-profile-image" src={nithinProfile} alt="Nithin Subhash" width={68} height={68} priority />
-              <div className="hero-profile-copy"><strong>Nithin Subhash</strong><span>UI/UX designer</span></div>
-            </div>
             <p className="hero-eyebrow"><span></span>UI/UX designer / digital experiences</p>
             <h1><span className="hero-title-line">Design with purpose.</span><em className="hero-title-line">Create with clarity.</em></h1>
             <p className="hero-intro">I create thoughtful, user-focused digital experiences that balance visual clarity, intuitive interaction, and implementation-ready design.</p>
@@ -158,10 +152,12 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="hero-scroll-index" aria-hidden="true"><span>01</span><i></i><span>04</span></div>
-      <a className="scroll-prompt interactive" href="#about"><span className="scroll-line"></span><span>Scroll to explore</span></a>
+        <div className="hero-scroll-controls">
+          <a className="scroll-prompt interactive" href="#about"><span className="scroll-line"></span><span>Scroll to explore</span></a>
+          <div className="hero-scroll-index" aria-hidden="true"><span>01</span><i></i><span>04</span></div>
+        </div>
+      </div>
     </section>
   );
 }
