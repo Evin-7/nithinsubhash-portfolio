@@ -2,14 +2,15 @@
   <div class="app">
     <div class="page-shell">
       <Navbar />
+      <ScrollProgress />
       <main class="content-shell">
         <section id="home"><Hero /></section>
-        <ProfileShowcase />
-        <Highlights />
-        <section id="about"><About /></section>
-        <section id="skills"><Skills /></section>
-        <section id="works"><Works /></section>
-        <section id="contact"><Contact /></section>
+        <ProfileShowcase v-scroll-reveal />
+        <Highlights v-scroll-reveal />
+        <section id="about" v-scroll-reveal><About /></section>
+        <section id="skills" v-scroll-reveal><Skills /></section>
+        <section id="works" v-scroll-reveal><Works /></section>
+        <section id="contact" v-scroll-reveal><Contact /></section>
       </main>
       <Footer />
     </div>
@@ -19,6 +20,7 @@
 <script setup>
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
+import ScrollProgress from "./components/ScrollProgress.vue";
 import Hero from "./views/Hero.vue";
 import ProfileShowcase from "./views/ProfileShowcase.vue";
 import Highlights from "./views/Highlights.vue";
