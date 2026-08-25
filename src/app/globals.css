@@ -2739,28 +2739,21 @@ body {
 }
 
 .skills-track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  will-change: transform;
-  animation: skills-marquee 46s linear infinite;
+  width: 100%;
 }
 
 .skills-group {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1.35rem;
-  padding-right: 1.35rem;
-}
-
-.skills-marquee:hover .skills-track {
-  animation-play-state: paused;
 }
 
 .skill-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
   gap: 0.65rem;
   min-height: 3.05rem;
@@ -2822,12 +2815,6 @@ body {
   }
 }
 
-@keyframes skills-marquee {
-  to {
-    transform: translateX(-33.333333%);
-  }
-}
-
 @media (max-width: 700px) {
   .skills {
     padding-block: 3.6rem;
@@ -2856,7 +2843,6 @@ body {
   .skills-track {
     display: block;
     width: 100%;
-    animation: none;
   }
 
   .skills-group {
@@ -2864,7 +2850,6 @@ body {
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.65rem;
-    padding-right: 0;
   }
 
   .skills-group:not(:first-child) {
