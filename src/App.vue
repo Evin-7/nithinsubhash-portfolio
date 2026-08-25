@@ -4,6 +4,7 @@
       <Navbar />
       <main class="content-shell">
         <section id="home"><Hero /></section>
+        <ProfileShowcase />
         <Highlights />
         <section id="about"><About /></section>
         <section id="skills"><Skills /></section>
@@ -19,6 +20,7 @@
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 import Hero from "./views/Hero.vue";
+import ProfileShowcase from "./views/ProfileShowcase.vue";
 import Highlights from "./views/Highlights.vue";
 import About from "./views/About.vue";
 import Skills from "./views/Skills.vue";
