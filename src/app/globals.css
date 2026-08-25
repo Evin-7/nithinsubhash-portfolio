@@ -2786,6 +2786,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.13);
   background: rgba(10, 10, 10, 0.72);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.2);
+  transform: translateX(-2px);
 }
 
 .skill-icon {
@@ -2813,11 +2814,6 @@ body {
 .skill-mark-chatgpt {
   color: #11110f;
   background: #f2f2f0;
-}
-
-/* The OpenAI artwork has a slight optical offset inside its SVG viewBox. */
-.skill-mark-chatgpt .skill-icon {
-  transform: translateX(-2px);
 }
 
 @keyframes skills-rise {
