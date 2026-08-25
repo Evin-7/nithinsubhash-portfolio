@@ -1,4 +1,3 @@
-import { Icon as IconifyIcon } from "@iconify/react";
 import { icons as logoCollection } from "@iconify-json/logos";
 
 const brandIconNames = {
@@ -8,11 +7,29 @@ const brandIconNames = {
   instagram: "instagram-icon",
 };
 
+const brandIconViewBoxes = {
+  email: "0 0 256 193",
+  linkedin: "0 0 256 256",
+  dribbble: "0 0 256 256",
+  instagram: "0 0 256 256",
+};
+
 export default function BrandIcon({ brand, className = "brand-icon", ...props }) {
   const iconName = brandIconNames[brand] || brand;
   const icon = logoCollection.icons[iconName];
 
   if (!icon) return null;
 
-  return <IconifyIcon icon={icon} className={className} {...props} />;
+  const viewBox = brandIconViewBoxes[brand] || "0 0 24 24";
+
+  return (
+    <svg
+      className={className}
+      viewBox={viewBox}
+      xmlns="http://www.w3.org/2000/svg"
+      focusable="false"
+      {...props}
+      dangerouslySetInnerHTML={{ __html: icon.body }}
+    />
+  );
 }

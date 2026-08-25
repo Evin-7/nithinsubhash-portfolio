@@ -59,7 +59,7 @@ export default function Navbar() {
         id="mobile-navigation"
         className={`mobile-navigation${isMenuOpen ? " is-open" : ""}`}
         aria-hidden={!isMenuOpen}
-        inert={!isMenuOpen ? "" : undefined}
+        inert={!isMenuOpen ? true : undefined}
       >
         {links.map(([label, href]) => (
           <a key={href} href={href} onClick={closeMenu} tabIndex={isMenuOpen ? 0 : -1}>
