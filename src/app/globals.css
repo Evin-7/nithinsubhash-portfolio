@@ -2816,7 +2816,7 @@ body {
 
 /* The OpenAI artwork has a slight optical offset inside its SVG viewBox. */
 .skill-mark-chatgpt .skill-icon {
-  transform: translateX(-1px);
+  transform: translateX(-2px);
 }
 
 @keyframes skills-rise {
