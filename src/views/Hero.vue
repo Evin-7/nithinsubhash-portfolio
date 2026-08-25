@@ -342,12 +342,12 @@ const resetPointer = () => {
   padding: clamp(8.2rem, 12vw, 10.5rem) 0 4rem;
   background: radial-gradient(
       circle at 75% 49%,
-      rgba(226, 193, 106, 0.12),
+      rgba(205, 249, 125, 0.12),
       transparent 19rem
     ),
     radial-gradient(
       circle at 4% 98%,
-      rgba(124, 87, 21, 0.08),
+      rgba(125, 168, 61, 0.08),
       transparent 18rem
     ),
     linear-gradient(122deg, #060706 0%, #0a0b0a 46%, #11110f 100%);
@@ -375,12 +375,12 @@ const resetPointer = () => {
   display: block;
   width: var(--particle-width, 2.6rem);
   height: var(--particle-height, 1.6rem);
-  border: 1px solid rgba(242, 224, 161, 0.26);
+  border: 1px solid rgba(205, 249, 125, 0.26);
   clip-path: polygon(13% 0, 100% 17%, 81% 100%, 0 76%);
   background: linear-gradient(
     135deg,
-    rgba(246, 232, 185, 0.22),
-    rgba(185, 145, 62, 0.06) 55%,
+    rgba(231, 255, 184, 0.22),
+    rgba(125, 168, 61, 0.06) 55%,
     rgba(255, 255, 255, 0.04)
   );
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.15),
@@ -540,7 +540,7 @@ const resetPointer = () => {
   inset: 0;
   background: radial-gradient(
       circle at var(--pointer-x) var(--pointer-y),
-      rgba(229, 203, 125, 0.11),
+      rgba(205, 249, 125, 0.11),
       transparent 19rem
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
@@ -655,16 +655,16 @@ const resetPointer = () => {
 }
 
 .hero-availability {
-  color: #d8c47e;
+  color: var(--gold-light);
 }
 
 .hero-availability i {
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 50%;
-  background: #d8c47e;
-  box-shadow: 0 0 0 0.24rem rgba(216, 196, 126, 0.1),
-    0 0 0.7rem rgba(216, 196, 126, 0.6);
+  background: var(--gold);
+  box-shadow: 0 0 0 0.24rem rgba(205, 249, 125, 0.1),
+    0 0 0.7rem rgba(205, 249, 125, 0.6);
   animation: orbit-pulse 2.6s ease-in-out infinite;
 }
 
@@ -709,14 +709,14 @@ const resetPointer = () => {
 }
 
 .hero-button-primary {
-  background: linear-gradient(120deg, #e5cd82, #c39d42);
+  background: linear-gradient(120deg, var(--gold-light), var(--gold));
   color: #171308;
-  box-shadow: 0 0.8rem 2.4rem rgba(192, 156, 66, 0.18);
+  box-shadow: 0 0.8rem 2.4rem rgba(205, 249, 125, 0.18);
 }
 
 .hero-button-primary:hover,
 .hero-button-primary:focus-visible {
-  box-shadow: 0 1.2rem 2.7rem rgba(192, 156, 66, 0.3);
+  box-shadow: 0 1.2rem 2.7rem rgba(205, 249, 125, 0.3);
 }
 
 .hero-button-primary span {
@@ -729,14 +729,14 @@ const resetPointer = () => {
 }
 
 .hero-button-secondary {
-  border-color: rgba(232, 218, 178, 0.24);
+  border-color: var(--gold-border);
   background: rgba(255, 255, 255, 0.025);
   color: #e5e0d6;
 }
 
 .hero-button-secondary:hover,
 .hero-button-secondary:focus-visible {
-  border-color: rgba(232, 218, 178, 0.54);
+  border-color: rgba(205, 249, 125, 0.54);
   background: rgba(255, 255, 255, 0.075);
 }
 
@@ -754,7 +754,7 @@ const resetPointer = () => {
 }
 
 .hero-meta strong {
-  color: rgba(229, 205, 130, 0.88);
+  color: rgba(205, 249, 125, 0.88);
   font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -777,7 +777,7 @@ const resetPointer = () => {
   z-index: 0;
   inset: 6% 3% 4%;
   content: "";
-  border: 1px solid rgba(233, 210, 142, 0.12);
+  border: 1px solid rgba(205, 249, 125, 0.12);
   clip-path: polygon(18% 0, 100% 12%, 82% 100%, 0 77%);
   opacity: 0.72;
   transform: rotate(-5deg);
@@ -789,7 +789,7 @@ const resetPointer = () => {
   z-index: 0;
   inset: 11% 8% 8% 4%;
   content: "";
-  border: 1px solid rgba(233, 210, 142, 0.08);
+  border: 1px solid rgba(205, 249, 125, 0.08);
   clip-path: polygon(5% 12%, 76% 0, 100% 42%, 78% 100%, 0 82%);
   opacity: 0.7;
   transform: rotate(4deg);
@@ -802,7 +802,7 @@ const resetPointer = () => {
   border-radius: 50%;
   background: radial-gradient(
     ellipse,
-    rgba(220, 184, 89, 0.14),
+    rgba(125, 168, 61, 0.14),
     transparent 65%
   );
   opacity: 0.8;
@@ -817,10 +817,10 @@ const resetPointer = () => {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(244, 220, 147, 0.72) 48%,
+    rgba(231, 255, 184, 0.72) 48%,
     transparent
   );
-  filter: drop-shadow(0 0 0.45rem rgba(231, 201, 116, 0.42));
+  filter: drop-shadow(0 0 0.45rem rgba(205, 249, 125, 0.42));
   opacity: 0.18;
   transform-origin: center;
 }
@@ -845,7 +845,7 @@ const resetPointer = () => {
   align-items: center;
   gap: 0.55rem;
   padding: 0.72rem 0.85rem;
-  border: 1px solid rgba(239, 216, 146, 0.2);
+  border: 1px solid rgba(205, 249, 125, 0.2);
   border-radius: 999px;
   color: rgba(239, 231, 206, 0.78);
   background: rgba(22, 22, 18, 0.42);
@@ -880,9 +880,9 @@ const resetPointer = () => {
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 50%;
-  background: #e8cf83;
-  box-shadow: 0 0 0 0.28rem rgba(232, 207, 131, 0.11),
-    0 0 1rem rgba(232, 207, 131, 0.72);
+  background: var(--gold);
+  box-shadow: 0 0 0 0.28rem rgba(205, 249, 125, 0.11),
+    0 0 1rem rgba(205, 249, 125, 0.72);
 }
 
 .visual-system {
@@ -914,12 +914,12 @@ const resetPointer = () => {
   stroke: rgba(246, 234, 198, 0.62);
   stroke-width: 1.15;
   vector-effect: non-scaling-stroke;
-  filter: drop-shadow(0 0 4px rgba(234, 211, 144, 0.3));
+  filter: drop-shadow(0 0 4px rgba(205, 249, 125, 0.3));
 }
 
 .fracture-map circle {
-  fill: #ead390;
-  filter: drop-shadow(0 0 7px rgba(234, 211, 144, 0.9));
+  fill: var(--gold-light);
+  filter: drop-shadow(0 0 7px rgba(205, 249, 125, 0.9));
 }
 
 .glass-plane,
@@ -933,7 +933,7 @@ const resetPointer = () => {
     125deg,
     rgba(255, 255, 255, 0.12),
     rgba(255, 255, 255, 0.02) 45%,
-    rgba(231, 191, 95, 0.04)
+    rgba(205, 249, 125, 0.04)
   );
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1),
     0 1.2rem 2.8rem rgba(0, 0, 0, 0.18);
@@ -988,7 +988,7 @@ const resetPointer = () => {
   clip-path: polygon(25% 0, 100% 32%, 89% 100%, 0 76%);
   background: linear-gradient(
     145deg,
-    rgba(230, 194, 105, 0.14),
+    rgba(205, 249, 125, 0.14),
     rgba(255, 255, 255, 0.04)
   );
   opacity: 0.72;
@@ -1007,7 +1007,7 @@ const resetPointer = () => {
     rgba(255, 255, 255, 0.08),
     transparent 28%,
     transparent 70%,
-    rgba(239, 211, 131, 0.04)
+    rgba(205, 249, 125, 0.04)
   );
 }
 
@@ -1105,7 +1105,7 @@ const resetPointer = () => {
 }
 
 .shard-ui-side strong {
-  color: #e8d180;
+  color: var(--gold-light);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.28rem;
   font-style: italic;
@@ -1137,7 +1137,7 @@ const resetPointer = () => {
 .signal-bars i {
   display: block;
   width: 0.22rem;
-  background: linear-gradient(#ead28b, rgba(234, 210, 139, 0.26));
+  background: linear-gradient(var(--gold-light), rgba(205, 249, 125, 0.26));
 }
 
 .signal-bars i:nth-child(1) {
@@ -1175,15 +1175,15 @@ const resetPointer = () => {
   display: inline-flex;
   align-items: center;
   gap: 0.38rem;
-  color: #e2c670;
+  color: var(--gold-light);
 }
 
 .panel-live i {
   width: 0.34rem;
   height: 0.34rem;
   border-radius: 50%;
-  background: #d7bc5f;
-  box-shadow: 0 0 0 0.28rem rgba(215, 188, 95, 0.11);
+  background: var(--gold);
+  box-shadow: 0 0 0 0.28rem rgba(205, 249, 125, 0.11);
 }
 
 .panel-main {
@@ -1194,7 +1194,7 @@ const resetPointer = () => {
 }
 
 .panel-main p {
-  color: #e5cb7d;
+  color: var(--gold-light);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.25rem, 2.4vw, 1.8rem);
   font-style: italic;
@@ -1216,8 +1216,8 @@ const resetPointer = () => {
   margin-top: auto;
   background: linear-gradient(
     90deg,
-    rgba(229, 203, 125, 0.75),
-    rgba(229, 203, 125, 0.08)
+    rgba(205, 249, 125, 0.75),
+    rgba(205, 249, 125, 0.08)
   );
 }
 
@@ -1263,7 +1263,7 @@ const resetPointer = () => {
   width: 4.1rem;
   height: 3rem;
   clip-path: polygon(0 0, 100% 17%, 82% 100%, 10% 79%);
-  color: #e2c670;
+  color: var(--gold-light);
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1274,7 +1274,7 @@ const resetPointer = () => {
   background: linear-gradient(
     125deg,
     rgba(255, 255, 255, 0.2),
-    rgba(226, 190, 98, 0.07)
+    rgba(205, 249, 125, 0.07)
   );
 }
 
@@ -1299,7 +1299,7 @@ const resetPointer = () => {
   z-index: 7;
   width: 1.75rem;
   height: 1.75rem;
-  border: 1px solid rgba(239, 216, 146, 0.48);
+  border: 1px solid rgba(205, 249, 125, 0.48);
   border-radius: 50%;
   transform: translateZ(60px);
 }
@@ -1312,7 +1312,7 @@ const resetPointer = () => {
   width: 2.45rem;
   height: 1px;
   content: "";
-  background: rgba(239, 216, 146, 0.35);
+  background: rgba(205, 249, 125, 0.35);
   transform: translate(-50%, -50%);
 }
 
@@ -1424,10 +1424,10 @@ const resetPointer = () => {
   inset: 0;
   pointer-events: none;
   background-image: linear-gradient(
-      rgba(234, 211, 144, 0.075) 1px,
+      rgba(205, 249, 125, 0.075) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(234, 211, 144, 0.075) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(205, 249, 125, 0.075) 1px, transparent 1px);
   background-position: center;
   background-size: 6rem 6rem;
   mask-image: radial-gradient(ellipse at 72% 50%, black, transparent 67%);
@@ -1452,7 +1452,7 @@ const resetPointer = () => {
   z-index: -1;
   width: 22rem;
   height: 22rem;
-  border: 1px solid rgba(232, 207, 133, 0.075);
+  border: 1px solid rgba(205, 249, 125, 0.075);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -1508,7 +1508,7 @@ const resetPointer = () => {
   background: linear-gradient(
     to bottom,
     var(--gold-light),
-    rgba(229, 203, 125, 0.12)
+    rgba(205, 249, 125, 0.12)
   );
   transform-origin: top;
 }

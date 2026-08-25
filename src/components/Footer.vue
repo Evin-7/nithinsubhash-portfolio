@@ -56,7 +56,7 @@ const currentYear = new Date().getFullYear();
   width: 34px;
   height: 34px;
   display: block;
-  filter: sepia(1) saturate(1.2) hue-rotate(2deg) drop-shadow(0 8px 14px var(--gold-glow));
+  filter: drop-shadow(0 8px 14px var(--gold-glow));
 }
 
 .footer-meta {

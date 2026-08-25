@@ -67,7 +67,7 @@ const closeMenu = () => {
     rgba(7, 8, 7, 0.82),
     rgba(17, 17, 15, 0.66)
   );
-  border-bottom: 1px solid rgba(232, 218, 178, 0.12);
+  border-bottom: 1px solid var(--gold-border);
   box-shadow: 0 0.8rem 2.6rem rgba(0, 0, 0, 0.16);
 }
 
@@ -81,7 +81,7 @@ const closeMenu = () => {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(229, 203, 125, 0.5),
+    rgba(205, 249, 125, 0.5),
     transparent
   );
   opacity: 0.75;
@@ -99,7 +99,7 @@ const closeMenu = () => {
   align-items: center;
   text-decoration: none;
   padding: 0.24rem;
-  border: 1px solid rgba(232, 218, 178, 0.2);
+  border: 1px solid var(--gold-border);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.035);
   transition: border-color 180ms ease, background-color 180ms ease,
@@ -108,8 +108,8 @@ const closeMenu = () => {
 
 .logo:hover,
 .logo:focus-visible {
-  border-color: rgba(229, 203, 125, 0.65);
-  background: rgba(229, 203, 125, 0.08);
+  border-color: rgba(205, 249, 125, 0.65);
+  background: rgba(205, 249, 125, 0.08);
   transform: translateY(-1px);
 }
 
@@ -122,7 +122,7 @@ const closeMenu = () => {
   width: 38px;
   height: 38px;
   display: block;
-  filter: sepia(1) saturate(1.2) hue-rotate(2deg) drop-shadow(0 8px 14px var(--gold-glow));
+  filter: drop-shadow(0 8px 14px var(--gold-glow));
 }
 
 .nav-links {
@@ -165,7 +165,7 @@ const closeMenu = () => {
   flex-direction: column;
   justify-content: center;
   gap: 0.3rem;
-  border: 1px solid rgba(232, 218, 178, 0.2);
+  border: 1px solid var(--gold-border);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.035);
   cursor: pointer;
@@ -174,8 +174,8 @@ const closeMenu = () => {
 
 .menu-toggle:hover,
 .menu-toggle:focus-visible {
-  border-color: rgba(229, 203, 125, 0.65);
-  background: rgba(229, 203, 125, 0.08);
+  border-color: rgba(205, 249, 125, 0.65);
+  background: rgba(205, 249, 125, 0.08);
 }
 
 .menu-toggle:focus-visible {
@@ -188,7 +188,7 @@ const closeMenu = () => {
   width: 100%;
   height: 1px;
   border-radius: 999px;
-  background: #e6dfd0;
+  background: var(--gold-light);
   transition: transform 180ms ease, opacity 180ms ease;
 }
 
@@ -219,7 +219,7 @@ const closeMenu = () => {
   .mobile-navigation.is-open {
     max-height: 18rem;
     padding-block: 0.55rem 0.85rem;
-    border-top-color: rgba(232, 218, 178, 0.1);
+    border-top-color: var(--gold-border);
     opacity: 1;
   }
 

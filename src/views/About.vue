@@ -64,7 +64,7 @@
   bottom: 0;
   background: radial-gradient(
     circle at 100% 0%,
-    rgba(212, 175, 55, 0.02) 0%,
+    rgba(205, 249, 125, 0.02) 0%,
     transparent 60%
   );
   pointer-events: none;
@@ -145,7 +145,7 @@
 .about-cv-link:focus-visible {
   transform: translateY(-2px);
   border-color: var(--gold);
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(205, 249, 125, 0.1);
 }
 
 .about-cv-link:focus-visible {

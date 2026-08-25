@@ -31,15 +31,15 @@ import Contact from "./views/Contact.vue";
   --bg-primary: #0d0d0d;
   --bg-surface: #1a1a1a;
   --bg-surface-alt: #151515;
-  --gold: #d4af37;
-  --gold-muted: rgba(212, 175, 55, 0.6);
-  --gold-border: rgba(212, 175, 55, 0.2);
-  --gold-glow: rgba(212, 175, 55, 0.15);
+  --gold: #cdf97d;
+  --gold-muted: rgba(205, 249, 125, 0.6);
+  --gold-border: rgba(205, 249, 125, 0.2);
+  --gold-glow: rgba(205, 249, 125, 0.15);
   --text-primary: #f2f2f2;
   --text-secondary: #9a9a9a;
   --code-bg: #101010;
-  --gold-deep: #9f7620;
-  --gold-light: #e6cb77;
+  --gold-deep: #7da83d;
+  --gold-light: #e7ffb8;
 }
 
 .site-container {

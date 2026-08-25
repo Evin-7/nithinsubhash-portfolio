@@ -103,7 +103,7 @@ const skills = [
   overflow: hidden;
   margin-top: 1.7rem;
   padding: 1px;
-  border: 1px solid rgba(230, 203, 119, 0.28);
+  border: 1px solid rgba(205, 249, 125, 0.28);
   border-radius: 22px;
   background: rgba(22, 22, 21, 0.8);
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.16);
@@ -140,7 +140,7 @@ const skills = [
   gap: 0.65rem;
   min-height: 3.05rem;
   padding: 0.5rem 0.95rem 0.5rem 0.55rem;
-  border: 1px solid rgba(212, 175, 55, 0.16);
+  border: 1px solid var(--gold-border);
   border-radius: 999px;
   color: #e8e3d5;
   background: linear-gradient(135deg, rgba(38, 38, 36, 0.96), rgba(22, 22, 21, 0.88));
@@ -157,7 +157,7 @@ const skills = [
   width: 2rem;
   height: 2rem;
   border-radius: 10px;
-  color: var(--icon-color, #f0d783);
+  color: var(--icon-color, var(--gold-light));
   border: 1px solid rgba(255, 255, 255, 0.13);
   background: rgba(10, 10, 10, 0.72);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.2);

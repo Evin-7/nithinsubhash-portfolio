@@ -350,7 +350,7 @@ const workGroups = [
   bottom: 0;
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(212, 175, 55, 0.03) 0%,
+    rgba(205, 249, 125, 0.03) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -364,8 +364,8 @@ const workGroups = [
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(212, 175, 55, 0.18) 35%,
-    rgba(212, 175, 55, 0.07) 65%,
+    rgba(205, 249, 125, 0.18) 35%,
+    rgba(205, 249, 125, 0.07) 65%,
     transparent
   );
   pointer-events: none;
@@ -393,7 +393,7 @@ const workGroups = [
   gap: 2rem;
   margin-bottom: 1.25rem;
   padding-bottom: 0.9rem;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+  border-bottom: 1px solid var(--gold-border);
 }
 
 .works-group-heading h3 {
@@ -500,7 +500,7 @@ const workGroups = [
   inset: 0;
   background: radial-gradient(
     circle at var(--spotlight-x) var(--spotlight-y),
-    rgba(243, 221, 147, 0.19),
+    rgba(205, 249, 125, 0.19),
     transparent 34%
   );
   opacity: 0;
@@ -518,7 +518,7 @@ const workGroups = [
   background: linear-gradient(
     105deg,
     transparent,
-    rgba(255, 245, 209, 0.16),
+    rgba(231, 255, 184, 0.16),
     transparent
   );
   transform: translateX(-155%) skewX(-16deg);
@@ -638,7 +638,7 @@ const workGroups = [
   border-radius: 16px 16px 10px 10px;
   background: linear-gradient(135deg, var(--bg-surface-alt) 0%, #0f0f0f 100%);
   overflow: hidden;
-  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.1);
+  box-shadow: inset 0 0 30px rgba(205, 249, 125, 0.1);
 }
 
 .laptop-screen-shell::after {
@@ -742,7 +742,7 @@ const workGroups = [
   margin-left: 0;
   padding: 0.55rem 0.75rem;
   border-radius: 14px;
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(205, 249, 125, 0.1);
   border: 1px solid var(--gold-border);
   color: var(--gold);
   text-decoration: none;
@@ -810,7 +810,7 @@ const workGroups = [
   }
 
   .work-card:hover .work-kicker span {
-    color: #f0d783;
+    color: var(--gold-light);
     transform: translateX(3px);
   }
 

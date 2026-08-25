@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
   height: 500px;
   background: radial-gradient(
     circle,
-    rgba(212, 175, 55, 0.08) 0%,
+    rgba(205, 249, 125, 0.08) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -263,7 +263,7 @@ onBeforeUnmount(() => {
     rgba(26, 26, 26, 0.8) 0%,
     rgba(26, 26, 26, 0.4) 100%
   );
-  box-shadow: 0 0 24px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 24px rgba(205, 249, 125, 0.2);
 }
 
 .submit-btn {
@@ -283,7 +283,7 @@ onBeforeUnmount(() => {
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 12px 32px rgba(205, 249, 125, 0.3);
 }
 
 .submit-btn:active:not(:disabled) {

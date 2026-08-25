@@ -81,7 +81,7 @@
   height: 600px;
   background: radial-gradient(
     circle,
-    rgba(212, 175, 55, 0.05) 0%,
+    rgba(205, 249, 125, 0.05) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -181,7 +181,7 @@
   display: inline-flex;
   padding: 0.38rem 0.65rem;
   border-radius: 999px;
-  background: rgba(212, 175, 55, 0.12);
+  background: rgba(205, 249, 125, 0.12);
   color: var(--gold);
   font-size: 0.74rem;
   font-weight: 700;
@@ -216,7 +216,7 @@
 .feature-points span {
   padding: 0.3rem 0.55rem;
   border-radius: 999px;
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(205, 249, 125, 0.1);
   font-size: 0.68rem;
   color: var(--text-primary);
   transition: all 0.3s ease;
@@ -326,7 +326,7 @@
   }
 
   .feature-points span:hover {
-    background: rgba(212, 175, 55, 0.3);
+    background: rgba(205, 249, 125, 0.3);
     transform: scale(1.1);
   }
 }
