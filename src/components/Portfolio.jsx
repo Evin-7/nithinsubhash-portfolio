@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import Reveal from "./Reveal";
 import ScrollProgress from "./ScrollProgress";
 import About from "../views/About";
 import Contact from "../views/Contact";
@@ -11,26 +11,6 @@ import Highlights from "../views/Highlights";
 import ProfileShowcase from "../views/ProfileShowcase";
 import Skills from "../views/Skills";
 import Works from "../views/Works";
-
-function ScrollSection({ children, id }) {
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <motion.div
-      id={id}
-      initial={reduceMotion ? false : { opacity: 0, y: 42, filter: "blur(8px)" }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, amount: 0.14 }}
-      transition={
-        reduceMotion
-          ? { duration: 0 }
-          : { duration: 0.82, ease: [0.22, 1, 0.36, 1] }
-      }
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 export default function Portfolio() {
   return (
@@ -42,24 +22,24 @@ export default function Portfolio() {
           <section id="home">
             <Hero />
           </section>
-          <ScrollSection>
+          <Reveal direction="up">
             <ProfileShowcase />
-          </ScrollSection>
-          <ScrollSection>
+          </Reveal>
+          <Reveal direction="left" delay={0.04}>
             <Highlights />
-          </ScrollSection>
-          <ScrollSection id="about">
+          </Reveal>
+          <Reveal id="about" direction="right" delay={0.06}>
             <About />
-          </ScrollSection>
-          <ScrollSection id="skills">
+          </Reveal>
+          <Reveal id="skills" direction="up" delay={0.08}>
             <Skills />
-          </ScrollSection>
-          <ScrollSection id="works">
+          </Reveal>
+          <Reveal id="works" direction="left" delay={0.1}>
             <Works />
-          </ScrollSection>
-          <ScrollSection id="contact">
+          </Reveal>
+          <Reveal id="contact" direction="right" delay={0.12}>
             <Contact />
-          </ScrollSection>
+          </Reveal>
         </main>
         <Footer />
       </div>

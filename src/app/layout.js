@@ -1,4 +1,5 @@
 import "./globals.css";
+import SmoothScroll from "../components/SmoothScroll";
 
 export const metadata = {
   title: "Nithin Subhash — UI/UX Designer",
@@ -18,7 +19,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><SmoothScroll>{children}</SmoothScroll></body>
     </html>
   );
 }
