@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import BrandIcon from "../components/BrandIcon";
 
 const CONTACT_EMAIL = "nithinsubhash01@gmail.com";
 
@@ -48,10 +49,12 @@ export default function Contact() {
           <p className="contact-text">For UI/UX design, product interfaces, and thoughtful digital experiences.</p>
 
           <div className="contact-links">
-            <a href={`mailto:${CONTACT_EMAIL}`} className="contact-link contact-link-primary interactive">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="contact-link contact-link-primary contact-link-with-icon interactive">
+              <BrandIcon brand="email" className="contact-link-icon contact-link-icon-email" aria-hidden="true" />
               {CONTACT_EMAIL}
             </a>
-            <a href="https://dribbble.com/_n1th1n" target="_blank" rel="noopener noreferrer" className="contact-link interactive">
+            <a href="https://dribbble.com/_n1th1n" target="_blank" rel="noopener noreferrer" className="contact-link contact-link-with-icon interactive">
+              <BrandIcon brand="dribbble" className="contact-link-icon contact-link-icon-dribbble" aria-hidden="true" />
               Dribbble profile <span aria-hidden="true">↗</span>
             </a>
           </div>

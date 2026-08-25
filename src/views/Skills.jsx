@@ -16,7 +16,7 @@ const skills = [
 
 function SkillIcon({ icon, name, color }) {
   if (!icon) {
-    return <span className="skill-fallback-icon" aria-hidden="true">{name.slice(0, 2)}</span>;
+    return null;
   }
 
   if (typeof icon === "function") {
