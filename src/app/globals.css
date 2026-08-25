@@ -2765,9 +2765,8 @@ body {
 .skill-icon {
   width: 1.1rem;
   height: 1.1rem;
-  color: var(--icon-color, currentColor);
-  fill: currentColor;
-  filter: drop-shadow(0 0 3px color-mix(in srgb, currentColor 42%, transparent));
+  display: block;
+  flex: 0 0 auto;
 }
 
 .skill-fallback-icon {
@@ -2789,6 +2788,12 @@ body {
 
 .skill-mark-next {
   border-color: rgba(255, 255, 255, 0.4);
+  background: #f2f2f0;
+}
+
+.skill-mark-framer,
+.skill-mark-chatgpt {
+  color: #11110f;
   background: #f2f2f0;
 }
 
