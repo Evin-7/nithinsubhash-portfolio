@@ -112,14 +112,12 @@ const workGroups = [
   {
     key: "websites",
     eyebrow: "Websites & platforms",
-    title: "Digital spaces built with intent.",
     description: "Web products, business platforms, and experiences shaped around people.",
     items: works.filter((work) => work.type !== "mobile"),
   },
   {
     key: "mobile",
     eyebrow: "Mobile products",
-    title: "Useful everywhere.",
     description: "Clear, expressive app experiences.",
     items: works.filter((work) => work.type === "mobile"),
   },
@@ -176,7 +174,9 @@ export default function Works() {
         {workGroups.map((group) => (
           <div key={group.key} className="works-group">
             <div className="works-group-heading">
-              <div><p className="works-group-eyebrow">{group.eyebrow}</p><h3>{group.title}</h3></div>
+              <div>
+                <p className="works-group-eyebrow">{group.eyebrow}</p>
+              </div>
               <p>{group.description}</p>
             </div>
             <div className="works-grid">

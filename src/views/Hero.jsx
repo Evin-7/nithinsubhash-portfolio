@@ -126,7 +126,7 @@ export default function Hero() {
             </div>
             <div className="hero-actions">
               <a className="hero-button hero-button-primary interactive" href="#works">View selected work <span aria-hidden="true">↗</span></a>
-              <a className="hero-button hero-button-secondary interactive" href="#contact">Contact Nithin</a>
+              <a className="hero-button hero-button-secondary interactive" href="#contact">Contact Me</a>
             </div>
             <div className="hero-meta" aria-label="Professional focus">
               <div><strong>01</strong><span>Product design</span></div>

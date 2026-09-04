@@ -65,7 +65,7 @@ html {
 }
 
 body {
-  font-family: "Plus Jakarta Sans", "SamsungOne", "Samsung One",
+  font-family: var(--font-clash-display), "Clash Display", "SamsungOne", "Samsung One",
     "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
     "Helvetica Neue", Arial, sans-serif;
   background: var(--bg-primary);
@@ -445,9 +445,17 @@ body {
 .about-shell {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
 }
 
 .about-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
   max-width: 720px;
   animation: slideInUp 0.8s ease-out 0.1s both;
 }
@@ -464,44 +472,53 @@ body {
 }
 
 .about-eyebrow {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
   color: var(--gold);
   opacity: 0.8;
 }
 
 .about-title {
-  margin-top: 1rem;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-  color: var(--gold);
+  margin-top: 0;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.088;
+  letter-spacing: normal;
+  color: var(--text-primary);
 }
 
 .about-text {
   max-width: 620px;
-  margin-top: 1.2rem;
-  font-size: 1.05rem;
+  margin-top: 0;
+  padding-top: 0.15rem;
+  padding-bottom: 0.5rem;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
   line-height: 1.75;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   transition: color 0.3s ease;
 }
 
 .about-cv-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.05rem;
+  gap: 0.5rem;
+  margin-top: 0;
+  padding: 0.75rem 1rem;
   border: 1px solid var(--gold-border);
   border-radius: 999px;
   color: var(--gold-light);
   background: var(--bg-surface);
   text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
   transition: transform 220ms ease, border-color 220ms ease,
     background-color 220ms ease;
 }
@@ -519,14 +536,15 @@ body {
 }
 
 .experience-item {
-  padding: 1.4rem;
-  border-radius: 24px;
+  min-width: 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
   background: linear-gradient(
     135deg,
     var(--bg-surface) 0%,
     rgba(26, 26, 26, 0.6) 100%
   );
-  border: 1.5px solid var(--gold-border);
+  border: 1px solid var(--gold-border);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: slideInUp 0.8s ease-out forwards;
   opacity: 0;
@@ -543,8 +561,10 @@ body {
 }
 
 .experience-item h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.25;
   color: var(--text-primary);
 }
 
@@ -552,20 +572,37 @@ body {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 1rem;
+  width: 100%;
 }
 
 .experience-item {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  align-items: flex-start;
+  align-items: center;
 }
 
-.experience-item p,
-.experience-item span {
+.experience-item p {
   margin-top: 0.35rem;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #e5e7eb;
+}
+
+.experience-item > span {
+  flex: 0 0 auto;
   color: var(--text-secondary);
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.experience-item:nth-child(3) > span {
+  min-width: 7rem;
+  padding-right: 2rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -631,9 +668,10 @@ body {
 }
 
 .contact-eyebrow {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
   color: var(--gold);
   opacity: 0.8;
@@ -641,16 +679,20 @@ body {
 
 .contact-title {
   margin-top: 0.9rem;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.088;
+  letter-spacing: normal;
   color: var(--gold);
 }
 
 .contact-text {
   margin-top: 1rem;
+  font-family: Arial, "Helvetica Neue", sans-serif;
   font-size: 1rem;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--text-secondary);
 }
 
@@ -673,9 +715,10 @@ body {
   border: 1.5px solid var(--gold-border);
   color: var(--gold);
   text-decoration: none;
-  font-size: 0.9rem;
-  line-height: 1;
-  font-weight: 500;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 400;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -725,12 +768,16 @@ body {
     rgba(26, 26, 26, 0.5) 100%
   );
   color: var(--text-primary);
-  font-size: 0.98rem;
-  font-family: inherit;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
   transition: all 0.3s ease;
 }
 
 .form-input::placeholder {
+  font-family: inherit;
+  font-weight: 400;
   color: var(--text-secondary);
 }
 
@@ -753,9 +800,10 @@ body {
   border-radius: 999px;
   background: var(--gold);
   color: var(--bg-primary);
-  font-size: 0.95rem;
-  font-family: inherit;
-  font-weight: 600;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
 }
@@ -776,6 +824,7 @@ body {
 
 .message-display {
   margin-top: 1.5rem;
+  font-family: Arial, "Helvetica Neue", sans-serif;
   color: var(--text-secondary);
   animation: slideInUp 0.6s ease-out;
 }
@@ -1058,9 +1107,9 @@ body {
   align-items: center;
   gap: 0.72rem;
   color: var(--gold-light);
-  font-size: 0.69rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   animation: soft-rise 700ms cubic-bezier(0.2, 0.75, 0.2, 1) 90ms both;
 }
@@ -1072,13 +1121,13 @@ body {
 }
 
 .hero h1 {
-  max-width: 11.6ch;
+  max-width: 42rem;
   margin-top: 1.25rem;
   color: #f6f5f1;
-  font-size: clamp(2.9rem, 5.2vw, 5.35rem);
-  font-weight: 600;
-  letter-spacing: -0.078em;
-  line-height: 0.91;
+  font-size: clamp(2.9rem, 5vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.946;
 }
 
 .hero-title-line {
@@ -1090,10 +1139,20 @@ body {
   animation-delay: 150ms;
 }
 
+@media (min-width: 1024px) {
+  .hero-title-line:first-child {
+    white-space: nowrap;
+  }
+}
+
+.hero-title-line + .hero-title-line {
+  margin-top: 0.375rem;
+}
+
 .hero h1 em {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
-  letter-spacing: -0.085em;
+  letter-spacing: -0.04em;
   color: var(--gold-light);
   animation-delay: 260ms;
 }
@@ -1159,13 +1218,13 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  min-height: 3.25rem;
-  padding: 0.75rem 1.2rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.25rem;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
   text-decoration: none;
   transition: transform 220ms ease, background-color 220ms ease,
     border-color 220ms ease, box-shadow 220ms ease;
@@ -1217,26 +1276,26 @@ body {
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem 1.8rem;
-  margin-top: clamp(2.9rem, 5vw, 4.75rem);
+  gap: 0.75rem 1.75rem;
+  margin-top: 3.5rem;
   animation: soft-rise 720ms cubic-bezier(0.2, 0.75, 0.2, 1) 560ms both;
 }
 
 .hero-meta div {
   display: grid;
-  gap: 0.27rem;
+  gap: 0.75rem;
 }
 
 .hero-meta strong {
   color: rgba(205, 249, 125, 0.88);
-  font-size: 0.63rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
 .hero-meta span {
-  color: #88877f;
-  font-size: 0.72rem;
+  color: #d8d5cc;
+  font-size: 0.875rem;
 }
 
 .hero-visual {
@@ -1580,7 +1639,7 @@ body {
 
 .shard-ui-side strong {
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: inherit;
   font-size: 1.28rem;
   font-style: italic;
   font-weight: 400;
@@ -1669,7 +1728,7 @@ body {
 
 .panel-main p {
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: inherit;
   font-size: clamp(1.25rem, 2.4vw, 1.8rem);
   font-style: italic;
 }
@@ -2239,6 +2298,18 @@ body {
     font-size: clamp(2.75rem, 12vw, 3.75rem);
   }
 
+  .hero-signal-row {
+    align-items: flex-start;
+  }
+
+  .hero-signal-code {
+    flex-basis: 100%;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
   .hero-intro {
     max-width: 31ch;
   }
@@ -2425,6 +2496,7 @@ body {
 }
 
 .highlights-eyebrow {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -2434,15 +2506,18 @@ body {
 }
 
 .highlights-title {
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   margin-top: 0.7rem;
   max-width: 11ch;
   font-size: clamp(1.65rem, 3.7vw, 2.85rem);
+  font-weight: 500;
   line-height: 0.95;
   letter-spacing: -0.05em;
   color: var(--gold);
 }
 
 .highlights-text {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   max-width: 56ch;
   margin-top: 0.8rem;
   font-size: 0.9rem;
@@ -2464,27 +2539,31 @@ body {
 }
 
 .feature-label {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   display: inline-flex;
   padding: 0.38rem 0.65rem;
   border-radius: 999px;
   background: rgba(205, 249, 125, 0.12);
   color: var(--gold);
   font-size: 0.74rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
 
 .highlights-feature h3 {
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   margin-top: 0.75rem;
   font-size: 1.12rem;
+  font-weight: 500;
   line-height: 1.08;
   letter-spacing: -0.04em;
   color: var(--text-primary);
 }
 
 .highlights-feature p {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   margin-top: 0.7rem;
   font-size: 0.82rem;
   line-height: 1.55;
@@ -2500,10 +2579,12 @@ body {
 }
 
 .feature-points span {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   padding: 0.3rem 0.55rem;
   border-radius: 999px;
   background: rgba(205, 249, 125, 0.1);
   font-size: 0.68rem;
+  font-weight: 400;
   color: var(--text-primary);
   transition: all 0.3s ease;
 }
@@ -2557,6 +2638,7 @@ body {
 }
 
 .highlight-icon {
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   width: 42px;
   height: 42px;
   border-radius: 14px;
@@ -2566,19 +2648,21 @@ body {
   background: var(--gold);
   color: var(--bg-primary);
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
 .highlight-card h3 {
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   margin-top: 1rem;
   font-size: 1.18rem;
   line-height: 1.12;
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .highlight-card p {
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   margin-top: 0.75rem;
   font-size: 0.95rem;
   line-height: 1.68;
@@ -2638,7 +2722,7 @@ body {
 .skills {
   position: relative;
   overflow: hidden;
-  padding: 4.5rem 0;
+  padding: 4rem 0;
   background: var(--bg-primary);
 }
 
@@ -2656,27 +2740,31 @@ body {
 }
 
 .skills-eyebrow {
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   color: var(--gold);
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .skills-title {
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   margin-top: 0.65rem;
   color: var(--text-primary);
-  font-size: clamp(1.9rem, 3.4vw, 3rem);
-  font-weight: 600;
+  font-size: clamp(2.5rem, 4.2vw, 3.75rem);
+  font-weight: 500;
   letter-spacing: -0.06em;
-  line-height: 0.98;
+  line-height: 0.9;
 }
 
 .skills-text {
-  max-width: 34ch;
+  max-width: 16rem;
   color: var(--text-secondary);
-  font-size: 0.84rem;
-  line-height: 1.55;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25;
   text-align: right;
 }
 
@@ -2686,7 +2774,7 @@ body {
   margin-top: 1.7rem;
   padding: 1px;
   border: 1px solid rgba(205, 249, 125, 0.28);
-  border-radius: 22px;
+  border-radius: 24px;
   background: rgba(22, 22, 21, 0.8);
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.16);
 }
@@ -2694,8 +2782,8 @@ body {
 .skills-marquee {
   position: relative;
   overflow: hidden;
-  padding: 0.85rem;
-  border-radius: 21px;
+  padding: 0.875rem;
+  border-radius: 24px;
   background: rgba(17, 17, 17, 0.92);
 }
 
@@ -2718,8 +2806,8 @@ body {
   align-items: center;
   flex: 0 0 auto;
   flex-wrap: nowrap;
-  gap: 1.35rem;
-  padding-right: 1.35rem;
+  gap: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .skills-marquee::before,
@@ -2744,20 +2832,21 @@ body {
 }
 
 .skill-pill {
+  font-family: Arial, "Helvetica Neue", sans-serif;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  min-height: 3.05rem;
+  min-height: 3rem;
   min-width: 0;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.625rem;
   border: 1px solid var(--gold-border);
   border-radius: 999px;
   color: #e8e3d5;
   background: linear-gradient(135deg, rgba(38, 38, 36, 0.96), rgba(22, 22, 21, 0.88));
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-align: center;
   white-space: nowrap;
 }
@@ -2766,7 +2855,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.75rem;
+  gap: 0.875rem;
   width: auto;
   min-width: 0;
 }
@@ -2775,10 +2864,10 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.15rem;
-  height: 2.15rem;
-  flex: 0 0 2.15rem;
-  padding: 0.38rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 2.25rem;
+  padding: 0.375rem;
   border-radius: 10px;
   line-height: 0;
   place-items: center;
@@ -2790,8 +2879,8 @@ body {
 }
 
 .skill-icon {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.25rem;
+  height: 1.25rem;
   max-width: 100%;
   max-height: 100%;
   display: block;
@@ -2933,7 +3022,7 @@ body {
 
 /* src/views/Works.vue */
 .works {
-  padding: 5rem 0;
+  padding: 4rem 0;
   background: var(--bg-primary);
   position: relative;
   overflow: hidden;
@@ -2976,7 +3065,7 @@ body {
 
 .works-heading {
   display: block;
-  margin-bottom: 2.2rem;
+  margin-bottom: 2.25rem;
   animation: slideInUp 0.8s ease-out 0.2s both;
 }
 
@@ -2986,35 +3075,38 @@ body {
 
 .works-group-heading {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.9rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.875rem;
   border-bottom: 1px solid var(--gold-border);
 }
 
-.works-group-heading h3 {
-  margin-top: 0.4rem;
-  color: var(--text-primary);
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
-  font-weight: 600;
-  letter-spacing: -0.055em;
+.works-group-heading > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .works-group-heading > p {
-  max-width: 30ch;
+  max-width: 43.75rem;
+  align-self: flex-start;
+  margin: 0;
   color: var(--text-secondary);
-  font-size: 0.76rem;
-  line-height: 1.55;
-  text-align: right;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
 }
 
 .works-group-eyebrow {
   color: var(--gold);
-  font-size: 0.63rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -3030,9 +3122,10 @@ body {
 }
 
 .works-eyebrow {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
   opacity: 0.8;
@@ -3041,9 +3134,11 @@ body {
 
 .works-title {
   margin-top: 0.8rem;
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  line-height: 0.96;
-  letter-spacing: -0.05em;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: clamp(2.5rem, 4.2vw, 3rem);
+  font-weight: 500;
+  line-height: 0.8333;
+  letter-spacing: -0.035em;
   color: var(--gold);
 }
 
@@ -3064,15 +3159,15 @@ body {
   position: relative;
   text-decoration: none;
   color: inherit;
-  min-height: 244px;
-  border-radius: 24px;
+  min-height: 240px;
+  border-radius: 12px;
   overflow: hidden;
   background: linear-gradient(
     135deg,
     var(--bg-surface) 0%,
     rgba(26, 26, 26, 0.8) 100%
   );
-  border: 1.5px solid var(--gold-border);
+  border: 1px solid var(--gold-border);
   transform: perspective(1200px) translateY(var(--card-lift))
     rotateX(var(--card-rotate-x)) rotateY(var(--card-rotate-y));
   transform-style: preserve-3d;
@@ -3081,7 +3176,7 @@ body {
   cursor: pointer;
   contain: layout paint style;
   content-visibility: auto;
-  contain-intrinsic-size: auto 244px;
+  contain-intrinsic-size: auto 240px;
 }
 
 .work-card::before {
@@ -3134,19 +3229,20 @@ body {
 .work-kicker {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   margin-bottom: 0.48rem;
   color: var(--text-secondary);
-  font-size: 0.61rem;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 0.6125rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .work-kicker span {
   color: var(--gold-light);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.58rem;
+  font-family: Consolas, ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.58125rem;
   transition: color 220ms ease, transform 300ms ease;
 }
 
@@ -3172,6 +3268,7 @@ body {
   gap: 0.4rem;
   min-width: 0;
   color: var(--text-secondary);
+  font-family: Arial, "Helvetica Neue", sans-serif;
   font-size: 0.64rem;
 }
 
@@ -3197,11 +3294,12 @@ body {
 }
 
 .work-title {
-  font-size: clamp(0.88rem, 1.15vw, 1.15rem);
-  line-height: 1.15;
-  letter-spacing: -0.04em;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
-  font-weight: 600;
 }
 
 .work-media {
@@ -3222,7 +3320,7 @@ body {
 
 .laptop-screen-shell {
   position: relative;
-  width: 92%;
+  width: 90%;
   aspect-ratio: 1.56 / 1;
   padding: 0.42rem 0.42rem 0.32rem;
   border-radius: 16px 16px 10px 10px;
@@ -3328,16 +3426,18 @@ body {
 .work-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   margin-left: 0;
-  padding: 0.55rem 0.75rem;
-  border-radius: 14px;
+  min-height: 2.25rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
   background: rgba(205, 249, 125, 0.1);
   border: 1px solid var(--gold-border);
   color: var(--gold);
   text-decoration: none;
   transition: all 0.3s ease;
-  font-weight: 600;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-weight: 500;
   transform: translateZ(24px);
 }
 
@@ -3349,8 +3449,9 @@ body {
 .work-cta span,
 .work-cta strong {
   margin: 0;
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
 }
 
 .work-link-icon {

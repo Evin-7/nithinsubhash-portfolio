@@ -4,10 +4,15 @@ export default function About() {
       <div className="about-shell site-container">
         <div className="about-copy">
           <p className="about-eyebrow">About</p>
-          <h2 className="about-title">Thoughtful experiences. Clearer products.</h2>
+          <h2 className="about-title">
+            Thoughtful experiences.
+            <br />
+            Clearer products.
+          </h2>
           <p className="about-text">
-            I merge creativity with logic to create digital experiences that look
-            great, work naturally, and stay practical to build.
+            I merge creativity with logic to create digital experiences that look great, work
+            <br />
+            naturally, and stay practical to build.
           </p>
           <a
             className="about-cv-link"
@@ -29,7 +34,7 @@ export default function About() {
             <span>Education</span>
           </div>
           <div className="experience-item">
-            <div><h3>20+ Happy Clients</h3><p>Web, mobile, and product experiences</p></div>
+            <div><h3>50+ Products Delivered</h3><p>Web, mobile, and product<br />experiences</p></div>
             <span>Selected work</span>
           </div>
         </div>
