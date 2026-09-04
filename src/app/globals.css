@@ -73,6 +73,93 @@ body {
   overflow-x: hidden;
 }
 
+body.is-initial-loading {
+  overflow-y: hidden;
+}
+
+.initial-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.initial-loader-brand {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  filter: drop-shadow(0 8px 14px var(--gold-glow));
+}
+
+.initial-loader-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.initial-loader-word-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initial-loader-word {
+  color: rgba(242, 242, 242, 0.82);
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: clamp(2.75rem, 8vw, 7rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+.initial-loader-count {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  color: var(--text-primary);
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.8;
+}
+
+.initial-loader-progress-track {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gold-border);
+}
+
+.initial-loader-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #cdf97d 0%, #9ede5f 50%, #cdf97d 100%);
+  box-shadow: 0 0 8px rgba(205, 249, 125, 0.35);
+}
+
+@media (min-width: 640px) {
+  .initial-loader-brand {
+    top: 2.5rem;
+    left: 2.5rem;
+  }
+
+  .initial-loader-count {
+    right: 2.5rem;
+    bottom: 2.5rem;
+  }
+}
+
 .app {
   position: relative;
   min-height: 100vh;
@@ -873,6 +960,14 @@ body {
       transparent 18rem
     ),
     linear-gradient(122deg, #060706 0%, #0a0b0a 46%, #11110f 100%);
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 700ms ease-out, transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.hero.hero-loaded {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-stage {
@@ -2400,6 +2495,12 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .hero-eyebrow,
   .hero-title-line,
   .hero-intro,

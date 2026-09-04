@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Footer from "./Footer";
+import InitialLoader from "./InitialLoader";
 import Navbar from "./Navbar";
 import Reveal from "./Reveal";
 import ScrollProgress from "./ScrollProgress";
@@ -12,14 +14,17 @@ import Skills from "../views/Skills";
 import Works from "../views/Works";
 
 export default function Portfolio() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className="app">
+      {isLoading ? <InitialLoader onComplete={() => setIsLoading(false)} /> : null}
       <div className="page-shell">
         <Navbar />
         <ScrollProgress />
         <main className="content-shell">
           <section id="home">
-            <Hero />
+            <Hero isLoading={isLoading} />
           </section>
           <Reveal direction="left" delay={0.04}>
             <Highlights />

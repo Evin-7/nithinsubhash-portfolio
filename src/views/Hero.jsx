@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 const smoothstep = (value) => value * value * (3 - 2 * value);
 
-export default function Hero() {
+export default function Hero({ isLoading = false }) {
   const hero = useRef(null);
   const [sceneEnabled, setSceneEnabled] = useState(false);
   const sceneMetrics = useRef({ top: 0, range: 1 });
@@ -103,7 +103,7 @@ export default function Hero() {
   };
 
   return (
-    <section ref={hero} className={`hero${sceneEnabled ? " scroll-scene" : ""}`} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
+    <section ref={hero} className={`hero${sceneEnabled ? " scroll-scene" : ""}${!isLoading ? " hero-loaded" : ""}`} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
       <div className="hero-grid" aria-hidden="true"></div>
       <div className="hero-grain" aria-hidden="true"></div>
       <div className="hero-halo halo-left" aria-hidden="true"></div>
