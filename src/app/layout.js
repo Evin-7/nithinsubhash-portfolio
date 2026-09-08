@@ -39,7 +39,7 @@ const clashDisplay = localFont({
 export const metadata = {
   title: "Nithin Subhash — UI/UX Designer",
   description:
-    "Portfolio of Nithin Subhash, a UI/UX designer creating thoughtful digital experiences, product interfaces, and design systems.",
+    "Portfolio of Nithin Subhash, a UI/UX designer creating thoughtful digital experiences, product interfaces, and design systems",
   icons: {
     icon: "/favicon.svg",
   },
