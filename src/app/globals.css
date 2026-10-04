@@ -755,7 +755,7 @@ body.is-initial-loading {
 }
 
 .contact-eyebrow {
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.025em;
@@ -766,7 +766,7 @@ body.is-initial-loading {
 
 .contact-title {
   margin-top: 0.9rem;
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.75rem);
   font-weight: 700;
   line-height: 1.088;
@@ -776,7 +776,7 @@ body.is-initial-loading {
 
 .contact-text {
   margin-top: 1rem;
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.75;
@@ -802,7 +802,7 @@ body.is-initial-loading {
   border: 1.5px solid var(--gold-border);
   color: var(--gold);
   text-decoration: none;
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   font-size: 0.875rem;
   line-height: 1rem;
   font-weight: 400;
@@ -848,14 +848,14 @@ body.is-initial-loading {
   width: 100%;
   padding: 1rem 1.1rem;
   border: 1.5px solid var(--gold-border);
-  border-radius: 20px;
+  border-radius: 12px;
   background: linear-gradient(
     135deg,
     var(--bg-surface) 0%,
     rgba(26, 26, 26, 0.5) 100%
   );
   color: var(--text-primary);
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.25;
@@ -887,9 +887,9 @@ body.is-initial-loading {
   border-radius: 999px;
   background: var(--gold);
   color: var(--bg-primary);
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.5;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
@@ -911,7 +911,7 @@ body.is-initial-loading {
 
 .message-display {
   margin-top: 1.5rem;
-  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-clash-display), "Clash Display", sans-serif;
   color: var(--text-secondary);
   animation: slideInUp 0.6s ease-out;
 }
@@ -3280,6 +3280,11 @@ body.is-initial-loading {
   contain-intrinsic-size: auto 240px;
 }
 
+.work-card:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
 .work-card::before {
   content: "";
   position: absolute;
@@ -3352,14 +3357,6 @@ body.is-initial-loading {
   align-items: center;
   justify-content: space-between;
   gap: 0.8rem;
-}
-
-.work-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.45rem;
-  margin-left: auto;
 }
 
 .work-meta {
@@ -3524,43 +3521,6 @@ body.is-initial-loading {
   transform: translateX(-50%);
 }
 
-.work-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: 0;
-  min-height: 2.25rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
-  background: rgba(205, 249, 125, 0.1);
-  border: 1px solid var(--gold-border);
-  color: var(--gold);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-family: var(--font-clash-display), "Clash Display", sans-serif;
-  font-weight: 500;
-  transform: translateZ(24px);
-}
-
-.work-cta:focus-visible {
-  outline: 2px solid var(--gold-light);
-  outline-offset: 3px;
-}
-
-.work-cta span,
-.work-cta strong {
-  margin: 0;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.work-link-icon {
-  width: 0.9rem;
-  height: 0.9rem;
-  flex: 0 0 auto;
-}
-
 @media (hover: hover) and (pointer: fine) {
   .work-card:hover {
     border-color: var(--gold);
@@ -3595,12 +3555,6 @@ body.is-initial-loading {
 
   .work-card:hover .laptop-frame {
     transform: translateY(-2px) rotateX(1deg);
-  }
-
-  .work-card:hover .work-cta {
-    background: var(--gold);
-    color: var(--bg-primary);
-    transform: translateX(4px);
   }
 
   .work-card:hover .laptop-topbar span {
@@ -3683,8 +3637,7 @@ body.is-initial-loading {
   .work-copy,
   .work-media,
   .laptop-frame,
-  .work-kicker span,
-  .work-cta {
+  .work-kicker span {
     transition: none;
   }
 }

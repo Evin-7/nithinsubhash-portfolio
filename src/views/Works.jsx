@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import BrandIcon from "../components/BrandIcon";
 import agsyba from "../assets/images/nithin/agsyba.png";
 import abezauto from "../assets/images/nithin/abezauto.png";
 import call2day from "../assets/images/nithin/call2day.png";
@@ -181,8 +180,11 @@ export default function Works() {
             </div>
             <div className="works-grid">
               {group.items.map((work, index) => (
-                <motion.article
+                <motion.a
                   key={work.name}
+                  href={work.links[0]?.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="work-card interactive"
                   style={{ "--reveal-delay": `${index * 55}ms` }}
                   initial={motionEnabled ? { opacity: 0, y: 36, filter: "blur(7px)" } : false}
@@ -210,17 +212,9 @@ export default function Works() {
                     </div>
                     <div className="work-footer">
                       <div className="work-meta"><span>{work.focus}</span><span>{work.year}</span></div>
-                      <div className="work-links">
-                        {work.links.map((link) => (
-                          <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="work-cta">
-                            {link.label === "Dribbble" && <BrandIcon brand="dribbble" className="work-link-icon" aria-hidden="true" />}
-                            <span>{link.label}</span><strong>↗</strong>
-                          </a>
-                        ))}
-                      </div>
                     </div>
                   </div>
-                </motion.article>
+                </motion.a>
               ))}
             </div>
           </div>
