@@ -4,6 +4,7 @@ import BrandIcon from "./BrandIcon";
 
 export default function Footer() {
   return (
+    
     <footer className="footer">
       <div className="footer-shell site-container">
         <div className="footer-brand">
