@@ -12,6 +12,7 @@
   --code-bg: #101010;
   --gold-deep: #cdf97d;
   --gold-light: #cdf97d;
+  --section-space: clamp(3rem, 5vw, 4rem);
 }
 
 .site-container {
@@ -151,6 +152,29 @@ body.cursor-ring-enabled * {
   to {
     transform: rotate(1turn);
   }
+}
+
+.atmosphere-background,
+.atmosphere-trail {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.atmosphere-background {
+  z-index: 0;
+}
+
+.atmosphere-trail {
+  z-index: 1101;
+}
+
+body.atmosphere-cursor-enabled,
+body.atmosphere-cursor-enabled * {
+  cursor: none !important;
 }
 
 .initial-loader {
@@ -308,19 +332,11 @@ body.cursor-ring-enabled * {
   right: 0;
   z-index: 1000;
   background: rgba(7, 8, 7, 0.94);
-  border-bottom: 1px solid var(--gold-border);
   box-shadow: 0 0.8rem 2.6rem rgba(0, 0, 0, 0.16);
 }
 
 .navbar::after {
-  content: "";
-  position: absolute;
-  right: 9%;
-  bottom: -1px;
-  left: 9%;
-  height: 1px;
-  background: rgba(205, 249, 125, 0.5);
-  opacity: 0.75;
+  display: none;
 }
 
 .nav-shell {
@@ -328,6 +344,12 @@ body.cursor-ring-enabled * {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3.5rem);
 }
 
 .logo {
@@ -363,15 +385,15 @@ body.cursor-ring-enabled * {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.65rem;
   list-style: none;
 }
 
 .nav-links a {
   position: relative;
-  color: #d8d4c9;
+  color: #ffffff;
   text-decoration: none;
-  font-size: 0.77rem;
+  font-size: 0.88rem;
   font-weight: 500;
   letter-spacing: 0.04em;
 }
@@ -392,6 +414,51 @@ body.cursor-ring-enabled * {
 .nav-links a:focus-visible { color: var(--gold-light); }
 .nav-links a:hover::after,
 .nav-links a:focus-visible::after { transform: scaleX(1); }
+
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.58rem;
+  min-height: 3rem;
+  padding: 0.68rem 1.3rem;
+  border: 1px solid rgba(205, 249, 125, 0.78);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 180ms ease, border-color 180ms ease,
+    background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.resume-link:hover,
+.resume-link:focus-visible {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+  background: rgba(205, 249, 125, 0.08);
+  box-shadow: 0 0 1.4rem rgba(205, 249, 125, 0.14);
+  transform: translateY(-1px);
+}
+
+.resume-link:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+.resume-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
 
 .menu-toggle {
   display: none;
@@ -433,6 +500,10 @@ body.cursor-ring-enabled * {
 }
 
 @media (max-width: 768px) {
+  .nav-actions {
+    display: none;
+  }
+
   .nav-links {
     display: none;
   }
@@ -461,8 +532,8 @@ body.cursor-ring-enabled * {
 
   .mobile-navigation a {
     padding: 0.72rem 0;
-    color: #d8d4c9;
-    font-size: 0.8rem;
+    color: #ffffff;
+    font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-decoration: none;
@@ -476,6 +547,13 @@ body.cursor-ring-enabled * {
   .mobile-navigation a:focus-visible {
     outline: 2px solid var(--gold-light);
     outline-offset: 3px;
+  }
+
+  .mobile-navigation .resume-link {
+    width: 100%;
+    margin-top: 0.45rem;
+    padding: 0.78rem 1rem;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -584,8 +662,8 @@ body.cursor-ring-enabled * {
 
 /* src/views/About.vue */
 .about {
-  padding: 5.5rem 0;
-  background: var(--bg-primary);
+  padding: var(--section-space) 0;
+  background: rgba(13, 13, 13, 0.9);
   position: relative;
   overflow: hidden;
 }
@@ -788,8 +866,8 @@ body.cursor-ring-enabled * {
 
 /* src/views/Contact.vue */
 .contact {
-  padding: 5.5rem 0;
-  background: var(--bg-primary);
+  padding: var(--section-space) 0;
+  background: rgba(13, 13, 13, 0.9);
   position: relative;
   overflow: hidden;
 }
@@ -1027,15 +1105,15 @@ body.cursor-ring-enabled * {
   padding: clamp(8.2rem, 12vw, 10.5rem) 0 4rem;
   background: radial-gradient(
       circle at 75% 49%,
-      rgba(205, 249, 125, 0.12),
+      rgba(205, 249, 125, 0.05),
       transparent 19rem
     ),
     radial-gradient(
       circle at 4% 98%,
-      rgba(205, 249, 125, 0.08),
+      rgba(205, 249, 125, 0.025),
       transparent 18rem
     ),
-    linear-gradient(122deg, #060706 0%, #0a0b0a 46%, #11110f 100%);
+    linear-gradient(122deg, rgba(6, 7, 6, 0.97) 0%, rgba(10, 11, 10, 0.96) 46%, rgba(17, 17, 15, 0.95) 100%);
   opacity: 0;
   transform: translateY(1.25rem);
   transition: opacity 700ms ease-out, transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
@@ -1234,12 +1312,12 @@ body.cursor-ring-enabled * {
   inset: 0;
   background: radial-gradient(
       circle at var(--pointer-x) var(--pointer-y),
-      rgba(205, 249, 125, 0.11),
+      rgba(205, 249, 125, 0.04),
       transparent 19rem
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: min(25vw, 24rem) 100%;
-  opacity: 0.35;
+  opacity: 0.18;
   mask-image: linear-gradient(90deg, black, transparent 84%);
 }
 
@@ -1332,8 +1410,8 @@ body.cursor-ring-enabled * {
 .hero-intro {
   max-width: 31rem;
   margin-top: 1.65rem;
-  color: #b9b7af;
-  font-size: clamp(0.95rem, 1.1vw, 1.06rem);
+  color: #ffffff;
+  font-size: clamp(1.05rem, 1.3vw, 1.18rem);
   line-height: 1.75;
   animation: soft-rise 720ms cubic-bezier(0.2, 0.75, 0.2, 1) 380ms both;
 }
@@ -1374,7 +1452,7 @@ body.cursor-ring-enabled * {
 }
 
 .hero-signal-code {
-  color: #77756e;
+  color: #ffffff;
 }
 
 .hero-actions {
@@ -1507,10 +1585,10 @@ body.cursor-ring-enabled * {
   border-radius: 50%;
   background: radial-gradient(
     ellipse,
-    rgba(205, 249, 125, 0.14),
+    rgba(205, 249, 125, 0.06),
     transparent 65%
   );
-  opacity: 0.8;
+  opacity: 0.55;
 }
 
 .visual-beam {
@@ -2129,14 +2207,14 @@ body.cursor-ring-enabled * {
   inset: 0;
   pointer-events: none;
   background-image: linear-gradient(
-      rgba(205, 249, 125, 0.075) 1px,
+      rgba(205, 249, 125, 0.035) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(205, 249, 125, 0.075) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(205, 249, 125, 0.035) 1px, transparent 1px);
   background-position: center;
   background-size: 6rem 6rem;
   mask-image: radial-gradient(ellipse at 72% 50%, black, transparent 67%);
-  opacity: 0.48;
+  opacity: 0.3;
 }
 
 .hero-grain {
@@ -2198,24 +2276,6 @@ body.cursor-ring-enabled * {
   text-transform: uppercase;
   transition: color 200ms ease, transform 200ms ease;
   animation: scroll-hint 2.8s ease-in-out 1.2s infinite;
-}
-
-.hero-scroll-index {
-  display: grid;
-  justify-items: center;
-  gap: 0.45rem;
-  color: rgba(218, 207, 173, 0.65);
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-}
-
-.hero-scroll-index i {
-  display: block;
-  width: 1px;
-  height: 3.35rem;
-  background: var(--gold);
-  transform-origin: top;
 }
 
 .scroll-prompt:hover {
@@ -2614,8 +2674,8 @@ body.cursor-ring-enabled * {
 
 /* src/views/Highlights.vue */
 .highlights {
-  padding: 4.15rem 0 2.45rem;
-  background: var(--bg-primary);
+  padding: clamp(2.5rem, 3.5vw, 3.25rem) 0 var(--section-space);
+  background: rgba(13, 13, 13, 0.9);
   position: relative;
   overflow: hidden;
 }
@@ -2906,8 +2966,8 @@ body.cursor-ring-enabled * {
 .skills {
   position: relative;
   overflow: hidden;
-  padding: 4rem 0;
-  background: var(--bg-primary);
+  padding: var(--section-space) 0;
+  background: rgba(13, 13, 13, 0.9);
 }
 
 .skills-shell {
@@ -3104,7 +3164,7 @@ body.cursor-ring-enabled * {
 
 @media (max-width: 700px) {
   .skills {
-    padding-block: 3.6rem;
+    padding-block: var(--section-space);
   }
 
   .skills-heading {
@@ -3206,8 +3266,8 @@ body.cursor-ring-enabled * {
 
 /* src/views/Works.vue */
 .works {
-  padding: 4rem 0;
-  background: var(--bg-primary);
+  padding: var(--section-space) 0;
+  background: rgba(13, 13, 13, 0.9);
   position: relative;
   overflow: hidden;
 }
@@ -3658,7 +3718,7 @@ body.cursor-ring-enabled * {
 
 @media (max-width: 780px) {
   .works {
-    padding-block: 4.4rem;
+    padding-block: var(--section-space);
   }
 
   .works-grid {

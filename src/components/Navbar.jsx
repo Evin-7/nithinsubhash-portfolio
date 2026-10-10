@@ -31,15 +31,29 @@ export default function Navbar() {
         <a href="#home" className="logo" onClick={closeMenu}>
           <Image src={logoMark} alt="Nithin Subhash logo" className="logo-mark" priority />
         </a>
-        <ul className="nav-links">
-          {links.map(([label, href]) => (
-            <li key={href}>
-              <a href={href} className="interactive" onClick={closeMenu}>
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="nav-actions">
+          <ul className="nav-links">
+            {links.map(([label, href]) => (
+              <li key={href}>
+                <a href={href} className="interactive" onClick={closeMenu}>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            className="resume-link interactive"
+            href="/NithinResume.pdf"
+            download="NithinResume.pdf"
+            onClick={closeMenu}
+          >
+            <svg className="resume-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v3h14v-3" />
+            </svg>
+            <span>Download Resume</span>
+          </a>
+        </div>
 
         <button
           className="menu-toggle interactive"
@@ -66,6 +80,18 @@ export default function Navbar() {
             {label}
           </a>
         ))}
+        <a
+          className="resume-link interactive"
+          href="/NithinResume.pdf"
+          download="NithinResume.pdf"
+          onClick={closeMenu}
+          tabIndex={isMenuOpen ? 0 : -1}
+        >
+          <svg className="resume-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v3h14v-3" />
+          </svg>
+          <span>Download Resume</span>
+        </a>
       </div>
     </nav>
   );

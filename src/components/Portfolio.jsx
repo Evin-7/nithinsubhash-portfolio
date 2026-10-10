@@ -8,6 +8,7 @@ import Reveal from "./Reveal";
 import ScrollProgress from "./ScrollProgress";
 import About from "../views/About";
 import Contact from "../views/Contact";
+import AtmosphereCanvas from "./AtmosphereCanvas";
 import CursorFollower from "./CursorFollower";
 import Hero from "../views/Hero";
 import Highlights from "../views/Highlights";
@@ -19,6 +20,7 @@ export default function Portfolio() {
 
   return (
     <div className="app">
+      <AtmosphereCanvas enableTrail={false} />
       <CursorFollower />
       {isLoading ? <InitialLoader onComplete={() => setIsLoading(false)} /> : null}
       <div className="page-shell">
