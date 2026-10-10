@@ -20,7 +20,7 @@ export default function Portfolio() {
 
   return (
     <div className="app">
-      <AtmosphereCanvas enableTrail={false} />
+      <AtmosphereCanvas />
       <CursorFollower />
       {isLoading ? <InitialLoader onComplete={() => setIsLoading(false)} /> : null}
       <div className="page-shell">

@@ -1,6 +1,6 @@
 /* src/App.vue */
 :root {
-  --bg-primary: #0d0d0d;
+  --bg-primary: #000000;
   --bg-surface: #1a1a1a;
   --bg-surface-alt: #151515;
   --gold: #cdf97d;
@@ -154,8 +154,7 @@ body.cursor-ring-enabled * {
   }
 }
 
-.atmosphere-background,
-.atmosphere-trail {
+.atmosphere-background {
   position: fixed;
   inset: 0;
   display: block;
@@ -166,15 +165,6 @@ body.cursor-ring-enabled * {
 
 .atmosphere-background {
   z-index: 0;
-}
-
-.atmosphere-trail {
-  z-index: 1101;
-}
-
-body.atmosphere-cursor-enabled,
-body.atmosphere-cursor-enabled * {
-  cursor: none !important;
 }
 
 .initial-loader {
@@ -560,7 +550,7 @@ body.atmosphere-cursor-enabled * {
 /* src/components/Footer.vue */
 .footer {
   padding: 3rem 0 4rem;
-  background: var(--bg-surface-alt);
+  background: transparent;
   border-top: 1px solid var(--gold-border);
 }
 
@@ -663,12 +653,13 @@ body.atmosphere-cursor-enabled * {
 /* src/views/About.vue */
 .about {
   padding: var(--section-space) 0;
-  background: rgba(13, 13, 13, 0.9);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
 
 .about::before {
+  display: none;
   content: "";
   position: absolute;
   top: 0;
@@ -867,12 +858,13 @@ body.atmosphere-cursor-enabled * {
 /* src/views/Contact.vue */
 .contact {
   padding: var(--section-space) 0;
-  background: rgba(13, 13, 13, 0.9);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
 
 .contact::before {
+  display: none;
   content: "";
   position: absolute;
   top: -50%;
@@ -1103,17 +1095,7 @@ body.atmosphere-cursor-enabled * {
   overflow: clip;
   min-height: max(44rem, 100svh);
   padding: clamp(8.2rem, 12vw, 10.5rem) 0 4rem;
-  background: radial-gradient(
-      circle at 75% 49%,
-      rgba(205, 249, 125, 0.05),
-      transparent 19rem
-    ),
-    radial-gradient(
-      circle at 4% 98%,
-      rgba(205, 249, 125, 0.025),
-      transparent 18rem
-    ),
-    linear-gradient(122deg, rgba(6, 7, 6, 0.97) 0%, rgba(10, 11, 10, 0.96) 46%, rgba(17, 17, 15, 0.95) 100%);
+  background: transparent;
   opacity: 0;
   transform: translateY(1.25rem);
   transition: opacity 700ms ease-out, transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
@@ -1302,6 +1284,7 @@ body.atmosphere-cursor-enabled * {
 
 .hero::before,
 .hero::after {
+  display: none;
   position: absolute;
   z-index: -1;
   content: "";
@@ -2207,6 +2190,7 @@ body.atmosphere-cursor-enabled * {
 }
 
 .hero-grid {
+  display: none;
   position: absolute;
   z-index: -1;
   inset: 0;
@@ -2223,6 +2207,7 @@ body.atmosphere-cursor-enabled * {
 }
 
 .hero-grain {
+  display: none;
   position: absolute;
   z-index: -1;
   inset: 0;
@@ -2236,6 +2221,7 @@ body.atmosphere-cursor-enabled * {
 }
 
 .hero-halo {
+  display: none;
   position: absolute;
   z-index: -1;
   width: 22rem;
@@ -2680,12 +2666,13 @@ body.atmosphere-cursor-enabled * {
 /* src/views/Highlights.vue */
 .highlights {
   padding: clamp(2.5rem, 3.5vw, 3.25rem) 0 var(--section-space);
-  background: rgba(13, 13, 13, 0.9);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
 
 .highlights::before {
+  display: none;
   content: "";
   position: absolute;
   bottom: -20%;
@@ -2972,7 +2959,7 @@ body.atmosphere-cursor-enabled * {
   position: relative;
   overflow: hidden;
   padding: var(--section-space) 0;
-  background: rgba(13, 13, 13, 0.9);
+  background: transparent;
 }
 
 .skills-shell {
@@ -3272,12 +3259,13 @@ body.atmosphere-cursor-enabled * {
 /* src/views/Works.vue */
 .works {
   padding: var(--section-space) 0;
-  background: rgba(13, 13, 13, 0.9);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
 
 .works::before {
+  display: none;
   content: "";
   position: absolute;
   top: 0;
@@ -3293,6 +3281,7 @@ body.atmosphere-cursor-enabled * {
 }
 
 .works::after {
+  display: none;
   content: "";
   position: absolute;
   inset: 12% 0 auto;
