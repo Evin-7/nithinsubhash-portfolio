@@ -1370,6 +1370,11 @@ body.atmosphere-cursor-enabled * {
   background: currentColor;
 }
 
+.hero-eyebrow .hero-experience {
+  color: #ffffff;
+  font-weight: inherit;
+}
+
 .hero h1 {
   max-width: 42rem;
   margin-top: 1.25rem;

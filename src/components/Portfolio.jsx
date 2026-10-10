@@ -30,8 +30,8 @@ export default function Portfolio() {
           <section id="home">
             <Hero isLoading={isLoading} />
           </section>
-          <Reveal direction="left" delay={0.04}>
-            <Highlights />
+          <Reveal id="works" direction="left" delay={0.04}>
+            <Works />
           </Reveal>
           <Reveal id="about" direction="right" delay={0.06}>
             <About />
@@ -39,8 +39,8 @@ export default function Portfolio() {
           <Reveal id="skills" direction="up" delay={0.08}>
             <Skills />
           </Reveal>
-          <Reveal id="works" direction="left" delay={0.1}>
-            <Works />
+          <Reveal direction="left" delay={0.1}>
+            <Highlights />
           </Reveal>
           <Reveal id="contact" direction="right" delay={0.12}>
             <Contact />

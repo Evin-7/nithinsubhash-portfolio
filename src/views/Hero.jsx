@@ -116,13 +116,10 @@ export default function Hero({ isLoading = false }) {
 
         <div className="hero-shell site-container">
           <div className="hero-copy">
-            <p className="hero-eyebrow"><span></span>UI/UX DESIGNER · DIGITAL PRODUCT DESIGNER</p>
+            <p className="hero-eyebrow"><span></span>UI/UX DESIGNER · <strong className="hero-experience">4 YEARS OF DESIGN EXPERIENCE</strong></p>
             <h1><span className="hero-title-line">Design with purpose.</span><em className="hero-title-line">Create with clarity.</em></h1>
             <p className="hero-intro">I design intuitive digital experiences that simplify complex workflows, connect user needs with business goals, and make digital products easier to use.</p>
 
-            <div className="hero-signal-row" aria-label="Professional focus">
-              <span className="hero-signal-code">4 YEARS OF DESIGN EXPERIENCE</span>
-            </div>
             <div className="hero-actions">
               <a className="hero-button hero-button-primary interactive" href="#works">View selected work <span aria-hidden="true">↗</span></a>
               <a className="hero-button hero-button-secondary interactive" href="#contact">Contact Me</a>
