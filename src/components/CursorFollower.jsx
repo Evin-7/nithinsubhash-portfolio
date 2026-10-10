@@ -3,32 +3,40 @@
 import { useEffect, useRef } from "react";
 
 export default function CursorFollower() {
-  const cursorRef = useRef(null);
+  const coreRef = useRef(null);
+  const followRef = useRef(null);
 
   useEffect(() => {
-    const cursor = cursorRef.current;
+    const core = coreRef.current;
+    const follow = followRef.current;
     const finePointer = window.matchMedia(
       "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)"
     );
 
-    if (!cursor || !finePointer.matches) return undefined;
+    if (!core || !follow || !finePointer.matches) return undefined;
 
-    const target = { x: -100, y: -100 };
-    const current = { x: -100, y: -100 };
+    const target = { x: -40, y: -40 };
+    const corePosition = { x: -40, y: -40 };
+    const followPosition = { x: -40, y: -40 };
     let animationFrame = null;
     let isVisible = false;
 
-    document.body.classList.add("cursor-ring-enabled");
+    document.body.classList.add("custom-cursor-enabled");
 
     const render = () => {
-      current.x += (target.x - current.x) * 0.18;
-      current.y += (target.y - current.y) * 0.18;
-      cursor.style.transform = `translate3d(${current.x}px, ${current.y}px, 0) translate(-50%, -50%)`;
+      animationFrame = null;
+      corePosition.x += (target.x - corePosition.x) * 0.34;
+      corePosition.y += (target.y - corePosition.y) * 0.34;
+      followPosition.x += (target.x - followPosition.x) * 0.14;
+      followPosition.y += (target.y - followPosition.y) * 0.14;
 
-      if (Math.abs(target.x - current.x) > 0.1 || Math.abs(target.y - current.y) > 0.1) {
+      core.style.transform = `translate3d(${corePosition.x}px, ${corePosition.y}px, 0)`;
+      follow.style.transform = `translate3d(${followPosition.x}px, ${followPosition.y}px, 0)`;
+
+      const coreDistance = Math.hypot(target.x - corePosition.x, target.y - corePosition.y);
+      const followDistance = Math.hypot(target.x - followPosition.x, target.y - followPosition.y);
+      if (coreDistance > 0.15 || followDistance > 0.15) {
         animationFrame = window.requestAnimationFrame(render);
-      } else {
-        animationFrame = null;
       }
     };
 
@@ -39,27 +47,31 @@ export default function CursorFollower() {
     const handlePointerMove = (event) => {
       target.x = event.clientX;
       target.y = event.clientY;
+
       if (!isVisible) {
         isVisible = true;
-        cursor.classList.add("is-visible");
+        core.classList.add("is-visible");
+        follow.classList.add("is-visible");
       }
 
       const element = event.target instanceof Element ? event.target : null;
-      cursor.classList.toggle(
-        "is-hovering",
-        Boolean(element?.closest("a, button, input, textarea, select, [role='button'], .interactive"))
+      const isHovering = Boolean(
+        element?.closest("a, button, input, textarea, select, [role='button'], .interactive")
       );
+      core.classList.toggle("is-hovering", isHovering);
+      follow.classList.toggle("is-hovering", isHovering);
       requestRender();
     };
 
-    const handlePointerDown = () => cursor.classList.add("is-pressed");
-    const handlePointerUp = () => cursor.classList.remove("is-pressed");
     const handlePointerLeave = (event) => {
-      if (!event.relatedTarget) {
-        isVisible = false;
-        cursor.classList.remove("is-visible", "is-hovering");
-      }
+      if (event.relatedTarget) return;
+      isVisible = false;
+      core.classList.remove("is-visible", "is-hovering", "is-pressed");
+      follow.classList.remove("is-visible", "is-hovering");
     };
+
+    const handlePointerDown = () => core.classList.add("is-pressed");
+    const handlePointerUp = () => core.classList.remove("is-pressed");
 
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
     window.addEventListener("pointerdown", handlePointerDown, { passive: true });
@@ -72,14 +84,14 @@ export default function CursorFollower() {
       window.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("pointerup", handlePointerUp);
       document.documentElement.removeEventListener("mouseleave", handlePointerLeave);
-      document.body.classList.remove("cursor-ring-enabled");
+      document.body.classList.remove("custom-cursor-enabled");
     };
   }, []);
 
   return (
-    <span ref={cursorRef} className="cursor-ring" aria-hidden="true">
-      <span className="cursor-ring-orbit" />
-      <span className="cursor-ring-dot" />
-    </span>
+    <>
+      <span ref={coreRef} className="custom-cursor-core" aria-hidden="true" />
+      <span ref={followRef} className="custom-cursor-follow" aria-hidden="true" />
+    </>
   );
 }

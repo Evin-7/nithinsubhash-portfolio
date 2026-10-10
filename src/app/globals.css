@@ -78,80 +78,60 @@ body.is-initial-loading {
   overflow-y: hidden;
 }
 
-body.cursor-ring-enabled,
-body.cursor-ring-enabled * {
+body.custom-cursor-enabled,
+body.custom-cursor-enabled * {
   cursor: none !important;
 }
 
-.cursor-ring {
+.custom-cursor-core,
+.custom-cursor-follow {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10000;
-  width: 2.35rem;
-  height: 2.35rem;
-  border: 1px solid rgba(205, 249, 125, 0.86);
-  border-radius: 50%;
-  opacity: 0;
   pointer-events: none;
+  opacity: 0;
   will-change: transform;
-  transition: width 240ms cubic-bezier(0.2, 0.75, 0.2, 1),
-    height 240ms cubic-bezier(0.2, 0.75, 0.2, 1),
-    border-color 240ms ease, background-color 240ms ease, opacity 180ms ease;
-  box-shadow: 0 0 0 1px rgba(205, 249, 125, 0.08),
-    0 0 1.25rem rgba(205, 249, 125, 0.18),
-    inset 0 0 0.75rem rgba(205, 249, 125, 0.08);
 }
 
-.cursor-ring.is-visible {
+.custom-cursor-core {
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+}
+
+.custom-cursor-core::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0.6rem rgba(255, 255, 255, 0.4);
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+.custom-cursor-follow {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+}
+
+.custom-cursor-follow::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  transition: transform 300ms ease, border-color 300ms ease;
+}
+
+.custom-cursor-core.is-visible,
+.custom-cursor-follow.is-visible {
   opacity: 1;
 }
 
-.cursor-ring-orbit {
-  position: absolute;
-  inset: -0.35rem;
-  border: 1px solid transparent;
-  border-top-color: rgba(205, 249, 125, 0.75);
-  border-right-color: rgba(205, 249, 125, 0.2);
-  border-radius: 50%;
-  animation: cursor-orbit 2.4s linear infinite;
-}
-
-.cursor-ring-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0.3rem;
-  height: 0.3rem;
-  border-radius: 50%;
-  background: var(--gold-light);
-  box-shadow: 0 0 0.7rem rgba(205, 249, 125, 0.95);
-  transform: translate(-50%, -50%);
-  transition: transform 240ms cubic-bezier(0.2, 0.75, 0.2, 1),
-    background-color 240ms ease;
-}
-
-.cursor-ring.is-hovering {
-  width: 3.7rem;
-  height: 3.7rem;
-  border-color: var(--gold-light);
-  background: rgba(205, 249, 125, 0.07);
-}
-
-.cursor-ring.is-hovering .cursor-ring-dot {
-  background: #f2f2f2;
-  transform: translate(-50%, -50%) scale(0.55);
-}
-
-.cursor-ring.is-pressed {
-  width: 1.85rem;
-  height: 1.85rem;
-}
-
-@keyframes cursor-orbit {
-  to {
-    transform: rotate(1turn);
-  }
+.custom-cursor-core.is-pressed::before {
+  transform: scale(0.7);
 }
 
 .atmosphere-background {

@@ -14,7 +14,7 @@ export default function Hero({ isLoading = false }) {
   const pointerTarget = useRef({ x: 0, y: 0 });
 
   const supportsScrollScene = () =>
-    window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)").matches;
+    window.matchMedia("(min-width: 320px) and (prefers-reduced-motion: no-preference)").matches;
 
   const updateSceneMetrics = () => {
     if (!hero.current) return;
