@@ -149,9 +149,6 @@ export default function Hero({ isLoading = false }) {
           </div>
         </div>
 
-        <div className="hero-scroll-controls">
-          <a className="scroll-prompt interactive" href="#about"><span className="scroll-line"></span><span>Scroll to explore</span></a>
-        </div>
       </div>
     </section>
   );
