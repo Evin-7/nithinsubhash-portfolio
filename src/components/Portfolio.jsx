@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import InitialLoader from "./InitialLoader";
 import Navbar from "./Navbar";
@@ -17,6 +17,17 @@ import Works from "../views/Works";
 
 export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, 0);
+    const frameId = window.requestAnimationFrame(() => window.scrollTo(0, 0));
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, []);
 
   return (
     <div className="app">
