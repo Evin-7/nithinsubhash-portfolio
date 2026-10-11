@@ -32,15 +32,12 @@ export default function About() {
         <div className="experience">
           <div className="experience-item">
             <div><h3>UI/UX Designer</h3><p>4+ years of experience</p></div>
-            <span>Present</span>
           </div>
           <div className="experience-item">
             <div><h3>B.Tech Computer Science</h3><p>Kerala Technological University</p></div>
-            <span>Education</span>
           </div>
           <div className="experience-item">
             <div><h3>50+ Products Delivered</h3><p>Web, mobile, and product<br />experiences</p></div>
-            <span>Selected work</span>
           </div>
         </div>
       </div>

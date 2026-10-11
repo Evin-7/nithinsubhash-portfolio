@@ -210,9 +210,6 @@ export default function Works() {
                         <div className="laptop-base"><div className="laptop-trackpad"></div></div>
                       </div>
                     </div>
-                    <div className="work-footer">
-                      <div className="work-meta"><span>{work.focus}</span><span>{work.year}</span></div>
-                    </div>
                   </div>
                 </motion.a>
               ))}

@@ -119,16 +119,16 @@ export default function Hero({ isLoading = false }) {
           <div className="hero-copy">
             <p className="hero-eyebrow"><span></span>UI/UX DESIGNER · <strong className="hero-experience">4 YEARS OF DESIGN EXPERIENCE</strong></p>
             <h1><span className="hero-title-line">Design with purpose.</span><em className="hero-title-line">Create with clarity.</em></h1>
-            <p className="hero-intro">I design intuitive digital experiences that simplify complex workflows, connect user needs with business goals, and make digital products easier to use.</p>
+            <p className="hero-intro">I&apos;m <span className="hero-intro-name">Nithin Subhash</span>, a UI/UX Designer crafting intuitive digital experiences that connect user needs, thoughtful design, and business goals.</p>
 
             <div className="hero-actions">
               <SpecularButton href="#works" variant="primary" size="lg" radius={0} className="hero-button hero-button-primary interactive">View selected work</SpecularButton>
               <SpecularButton href="#contact" variant="secondary" size="lg" radius={0} className="hero-button hero-button-secondary interactive">Contact Me</SpecularButton>
             </div>
             <div className="hero-meta" aria-label="Professional focus">
-              <div><strong>01</strong><span>Product design</span></div>
-              <div><strong>02</strong><span>Design systems</span></div>
-              <div><strong>03</strong><span>Responsive UI</span></div>
+              <div><strong>01</strong><span>4 Years of Experience</span></div>
+              <div><strong>02</strong><span>50+ Websites Designed</span></div>
+              <div><strong>03</strong><span>Web &amp; Mobile Products</span></div>
             </div>
           </div>
 

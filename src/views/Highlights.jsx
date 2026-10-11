@@ -5,20 +5,16 @@ export default function Highlights() {
         <div className="highlights-intro">
           <div className="highlights-copy">
             <p className="highlights-eyebrow">What I Do</p>
-            <h2 className="highlights-title">UI/UX design with a sharper product eye.</h2>
+            <h2 className="highlights-title">UI/UX design with a user-first product mindset.</h2>
             <p className="highlights-text">
-              I create clear, usable, and production-ready experiences, balancing
-              visual craft with practical interaction design across web products,
-              mobile apps, and business platforms.
+              I&apos;m Nithin Subhash, a UI/UX Designer creating intuitive, user-centered experiences through thoughtful visual design, clear interactions, and practical solutions for web, mobile, and enterprise products.
             </p>
           </div>
 
           <div className="highlights-feature">
-            <span className="feature-label">Design approach</span>
-            <h3>Thoughtful flows. Clear interfaces. Strong execution.</h3>
+            <h3>Thoughtful flows. Clear interfaces. Better experiences.</h3>
             <p>
-              The goal is simple: design work that looks intentional, feels easy
-              to use, and is practical for teams to build and maintain.
+              I turn complex requirements into intuitive experiences that balance user needs, business goals, and practical implementation.
             </p>
             <div className="feature-points">
               {[
@@ -27,7 +23,7 @@ export default function Highlights() {
                 "Design systems",
                 "Responsive UI",
                 "Prototyping",
-                "Implementation-ready design",
+                "Developer Handoff",
               ].map((point) => <span key={point}>{point}</span>)}
             </div>
           </div>
@@ -35,9 +31,9 @@ export default function Highlights() {
 
         <div className="highlights-grid">
           {[
-            ["01", "UI/UX Design", "User journeys, wireframes, prototypes, and polished interfaces that make complex products easier to understand and use."],
-            ["02", "Product Design", "Mobile and web product experiences shaped around real user needs, clear interaction patterns, and business goals."],
-            ["03", "Design Systems", "Consistent components, responsive layouts, and practical handoff details that help teams build with confidence."],
+            ["01", "UI/UX Design", "User flows, wireframes, prototypes, and intuitive interfaces that simplify complex products and improve usability."],
+            ["02", "Product Design", "Web and mobile experiences shaped around user needs, intuitive interactions, and meaningful business objectives."],
+            ["03", "Design Systems", "Reusable components, consistent visual patterns, and responsive layouts that help teams build scalable digital products."],
           ].map(([number, title, copy], index) => (
             <article key={number} className={`highlight-card${index === 0 ? " highlight-card-primary" : ""}`}>
               <div className="highlight-icon">{number}</div>
