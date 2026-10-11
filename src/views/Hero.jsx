@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import SpecularButton from "../components/SpecularButton";
 
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 const smoothstep = (value) => value * value * (3 - 2 * value);
@@ -121,8 +122,8 @@ export default function Hero({ isLoading = false }) {
             <p className="hero-intro">I design intuitive digital experiences that simplify complex workflows, connect user needs with business goals, and make digital products easier to use.</p>
 
             <div className="hero-actions">
-              <a className="hero-button hero-button-primary interactive" href="#works">View selected work <span aria-hidden="true">↗</span></a>
-              <a className="hero-button hero-button-secondary interactive" href="#contact">Contact Me</a>
+              <SpecularButton href="#works" variant="primary" size="lg" radius={0} className="hero-button hero-button-primary interactive">View selected work</SpecularButton>
+              <SpecularButton href="#contact" variant="secondary" size="lg" radius={0} className="hero-button hero-button-secondary interactive">Contact Me</SpecularButton>
             </div>
             <div className="hero-meta" aria-label="Professional focus">
               <div><strong>01</strong><span>Product design</span></div>

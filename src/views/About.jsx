@@ -1,3 +1,5 @@
+import SpecularButton from "../components/SpecularButton";
+
 export default function About() {
   return (
     <section className="about">
@@ -14,14 +16,17 @@ export default function About() {
             <br />
             naturally, and stay practical to build.
           </p>
-          <a
+          <SpecularButton
+            variant="secondary"
+            size="md"
+            radius={0}
             className="about-cv-link"
             href="https://drive.google.com/file/d/1ZWWQpRwakI6nM4hYUjXOWgTxBTjjbpTA/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read Nithin&apos;s CV <span aria-hidden="true">↗</span>
-          </a>
+            Read Nithin&apos;s CV
+          </SpecularButton>
         </div>
 
         <div className="experience">

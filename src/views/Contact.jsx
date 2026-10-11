@@ -1,45 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import BrandIcon from "../components/BrandIcon";
+import SpecularButton from "../components/SpecularButton";
 
 const CONTACT_EMAIL = "nithinsubhash01@gmail.com";
+const GMAIL_COMPOSE_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}`;
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitText, setSubmitText] = useState("Send Message");
-  const [messageText, setMessageText] = useState("");
-  const statusTimer = useRef(null);
-
-  useEffect(() => () => clearTimeout(statusTimer.current), []);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setForm((current) => ({ ...current, [name]: value }));
-  };
-
-  const submitForm = (event) => {
-    event.preventDefault();
-    clearTimeout(statusTimer.current);
-    setIsSubmitting(true);
-    setSubmitText("Sending...");
-    setMessageText("");
-
-    const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`);
-    const body = encodeURIComponent(`${form.message}\n\nReply to: ${form.email}`);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-
-    setSubmitText("Opening email...");
-    setMessageText("Your email app should open with the message ready to send.");
-    setForm({ name: "", email: "", message: "" });
-    statusTimer.current = setTimeout(() => {
-      setSubmitText("Send Message");
-      setIsSubmitting(false);
-      setMessageText("");
-    }, 3000);
-  };
-
   return (
     <section className="contact">
       <div className="site-container">
@@ -49,24 +16,16 @@ export default function Contact() {
           <p className="contact-text">For UI/UX design, product interfaces, and thoughtful digital experiences.</p>
 
           <div className="contact-links">
-            <a href={`mailto:${CONTACT_EMAIL}`} className="contact-link contact-link-primary contact-link-with-icon interactive">
+            <SpecularButton href={GMAIL_COMPOSE_URL} target="_blank" rel="noopener noreferrer" variant="primary" size="md" radius={0} className="contact-link contact-link-primary contact-link-with-icon interactive">
               <BrandIcon brand="email" className="contact-link-icon contact-link-icon-email" aria-hidden="true" />
               {CONTACT_EMAIL}
-            </a>
-            <a href="https://dribbble.com/_n1th1n" target="_blank" rel="noopener noreferrer" className="contact-link contact-link-with-icon interactive">
+            </SpecularButton>
+            <SpecularButton href="https://dribbble.com/_n1th1n" target="_blank" rel="noopener noreferrer" variant="secondary" size="md" radius={0} className="contact-link contact-link-with-icon interactive">
               <BrandIcon brand="dribbble" className="contact-link-icon contact-link-icon-dribbble" aria-hidden="true" />
-              Dribbble profile <span aria-hidden="true">↗</span>
-            </a>
+              Dribbble profile
+            </SpecularButton>
           </div>
 
-          {messageText && <div className="message-display">{messageText}</div>}
-
-          <form className="contact-form" onSubmit={submitForm}>
-            <input name="name" value={form.name} onChange={handleChange} type="text" placeholder="Name" required className="form-input" />
-            <input name="email" value={form.email} onChange={handleChange} type="email" placeholder="Email" required className="form-input" />
-            <textarea name="message" value={form.message} onChange={handleChange} placeholder="Tell me about your project" rows={5} required className="form-input" />
-            <button type="submit" className="submit-btn interactive" disabled={isSubmitting}>{submitText}</button>
-          </form>
         </div>
       </div>
     </section>

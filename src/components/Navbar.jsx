@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import logoMark from "../assets/icons/nithin-logo.svg";
+import SpecularButton from "./SpecularButton";
 
 const links = [
   ["About", "#about"],
@@ -42,7 +43,10 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <a
+          <SpecularButton
+            variant="secondary"
+            size="md"
+            radius={0}
             className="resume-link interactive"
             href="/NithinResume.pdf"
             download="NithinResume.pdf"
@@ -52,11 +56,14 @@ export default function Navbar() {
               <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v3h14v-3" />
             </svg>
             <span>Download Resume</span>
-          </a>
+          </SpecularButton>
         </div>
 
-        <button
+        <SpecularButton
           className="menu-toggle interactive"
+          variant="secondary"
+          size="icon"
+          radius={0}
           type="button"
           aria-label="Toggle navigation menu"
           aria-controls="mobile-navigation"
@@ -66,7 +73,7 @@ export default function Navbar() {
           <span></span>
           <span></span>
           <span></span>
-        </button>
+        </SpecularButton>
       </div>
 
       <div
@@ -80,7 +87,10 @@ export default function Navbar() {
             {label}
           </a>
         ))}
-        <a
+        <SpecularButton
+          variant="secondary"
+          size="md"
+          radius={0}
           className="resume-link interactive"
           href="/NithinResume.pdf"
           download="NithinResume.pdf"
@@ -91,7 +101,7 @@ export default function Navbar() {
             <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v3h14v-3" />
           </svg>
           <span>Download Resume</span>
-        </a>
+        </SpecularButton>
       </div>
     </nav>
   );
