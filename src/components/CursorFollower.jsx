@@ -55,6 +55,9 @@ export default function CursorFollower() {
       }
 
       const element = event.target instanceof Element ? event.target : null;
+      const isFeaturedProject = Boolean(element?.closest(".featured-project-row"));
+      core.classList.toggle("is-featured-project", isFeaturedProject);
+      follow.classList.toggle("is-featured-project", isFeaturedProject);
       const isHovering = Boolean(
         element?.closest("a, button, input, textarea, select, [role='button'], .interactive")
       );
@@ -66,8 +69,8 @@ export default function CursorFollower() {
     const handlePointerLeave = (event) => {
       if (event.relatedTarget) return;
       isVisible = false;
-      core.classList.remove("is-visible", "is-hovering", "is-pressed");
-      follow.classList.remove("is-visible", "is-hovering");
+      core.classList.remove("is-visible", "is-hovering", "is-pressed", "is-featured-project");
+      follow.classList.remove("is-visible", "is-hovering", "is-featured-project");
     };
 
     const handlePointerDown = () => core.classList.add("is-pressed");

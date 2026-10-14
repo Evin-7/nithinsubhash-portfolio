@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-shell site-container">
         <div className="footer-brand">
-          <a href="#home" aria-label="Back to top">
+          <a href="/#home" aria-label="Back to top">
             <Image src={logoMark} alt="Nithin Subhash logo" className="footer-mark" />
           </a>
         </div>

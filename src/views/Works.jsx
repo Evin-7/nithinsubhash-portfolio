@@ -1,12 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SpecularButton from "../components/SpecularButton";
 import agsyba from "../assets/images/nithin/agsyba.png";
-import abezauto from "../assets/images/nithin/abezauto.png";
+import abezauto from "../assets/images/nithin/abezauto-showcase.png";
 import call2day from "../assets/images/nithin/call2day.png";
-import elateChat from "../assets/images/nithin/elate-chat.png";
+import elateChat from "../assets/images/nithin/elate-chat-cover.webp";
 import hrms from "../assets/images/nithin/hrms.png";
 import coworkKerala from "../assets/images/nithin/cowork-kerala.png";
 import eInvoicing from "../assets/images/nithin/e-invoicing.png";
@@ -22,7 +25,7 @@ const works = [
     type: "web",
     kicker: "E-commerce Website",
     year: "Featured",
-    focus: "Fashion Web & Mobile",
+    description: "A modern fashion storefront for exploring new collections and shopping across web and mobile.",
   },
   {
     name: "AbeZauto",
@@ -31,7 +34,7 @@ const works = [
     type: "web",
     kicker: "E-commerce Platform",
     year: "Featured",
-    focus: "Auto Parts Platform",
+    description: "An auto-parts store for browsing automotive products and finding the right fit for your vehicle.",
   },
   {
     name: "Call2Day",
@@ -40,7 +43,7 @@ const works = [
     type: "web",
     kicker: "Home Maintenance Website",
     year: "Featured",
-    focus: "Service Experience",
+    description: "A home-services website for exploring maintenance options and requesting help with everyday repairs.",
   },
   {
     name: "Elate Chat",
@@ -49,7 +52,7 @@ const works = [
     image: elateChat,
     kicker: "Mobile App",
     year: "Featured",
-    focus: "Community Communication",
+    description: "A mobile app where teams and communities connect through focused channels and timely broadcast updates.",
   },
   {
     name: "Modern HRMS Website Design",
@@ -58,16 +61,16 @@ const works = [
     type: "web",
     kicker: "Web Design",
     year: "Featured",
-    focus: "HRMS Website",
+    description: "A UAE-focused HR platform for managing payroll, leave, recruitment, and attendance in one place.",
   },
   {
     name: "Cowork Kerala",
     links: [{ label: "Dribbble", href: "https://dribbble.com/shots/26626031-Cowork-Kerala-Your-workspace-your-way" }],
     image: coworkKerala,
+    imagePosition: "top",
     type: "web",
     kicker: "Web Design",
     year: "Featured",
-    focus: "Workspace Experience",
   },
   {
     name: "Modern E-Invoicing Platform",
@@ -76,7 +79,6 @@ const works = [
     type: "web",
     kicker: "Web Design",
     year: "Featured",
-    focus: "Business Platform",
   },
   {
     name: "Swedish Design Agency Website",
@@ -85,7 +87,6 @@ const works = [
     type: "web",
     kicker: "Website Design",
     year: "Featured",
-    focus: "Agency Experience",
   },
   {
     name: "AROD",
@@ -94,7 +95,6 @@ const works = [
     image: arod,
     kicker: "UI/UX Design",
     year: "Featured",
-    focus: "Food Ordering App",
   },
   {
     name: "Likee",
@@ -103,32 +103,98 @@ const works = [
     image: likee,
     kicker: "UI/UX Design",
     year: "Featured",
-    focus: "Dating App Experience",
   },
 ];
+
+const featuredWorks = works.slice(0, 5);
+const indexedWorks = works.map((work, index) => ({ work, index }));
 
 const workGroups = [
   {
     key: "websites",
     eyebrow: "Websites & platforms",
     description: "Web products, business platforms, and experiences shaped around people.",
-    items: works.filter((work) => work.type !== "mobile"),
+    items: indexedWorks.filter(({ work }) => work.type !== "mobile"),
   },
   {
     key: "mobile",
     eyebrow: "Mobile products",
     description: "Clear, expressive app experiences.",
-    items: works.filter((work) => work.type === "mobile"),
+    items: indexedWorks.filter(({ work }) => work.type === "mobile"),
   },
 ];
 
 const formatIndex = (index) => String(index + 1).padStart(2, "0");
 
-export default function Works() {
+export default function Works({ allProjectsPage = false }) {
   const worksSection = useRef(null);
   const cardRects = useRef(new WeakMap());
   const reducedMotion = useReducedMotion();
   const motionEnabled = reducedMotion !== true;
+  const caseX = useMotionValue(0);
+  const caseY = useMotionValue(0);
+  const caseSpringX = useSpring(caseX, { stiffness: 700, damping: 52, mass: 0.18 });
+  const caseSpringY = useSpring(caseY, { stiffness: 700, damping: 52, mass: 0.18 });
+
+  useEffect(() => {
+    if (allProjectsPage) return undefined;
+
+    const section = worksSection.current;
+    if (!section) return undefined;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia();
+    media.add(
+      "(min-width: 900px) and (min-height: 650px) and (prefers-reduced-motion: no-preference)",
+      () => {
+        const rows = gsap.utils.toArray(".featured-project-row", section);
+        if (rows.length < 2) return undefined;
+        const stackOffset = 16;
+        const animationTriggers = [];
+        const scaleForCard = gsap.utils.distribute({ base: 0.8, amount: 0.2 });
+
+        rows.forEach((row, index) => {
+          const topOffset = 96 + index * stackOffset;
+          const stepEnd = Math.max(200, Math.round(row.offsetHeight * 0.55));
+          gsap.set(row, { zIndex: index + 1 });
+
+          const getAnimationTrigger = () => ({
+            trigger: row,
+            start: `top top+=${topOffset}`,
+            end: `+=${stepEnd}`,
+            scrub: true,
+            invalidateOnRefresh: true,
+          });
+          const details = row.querySelector(".featured-project-details");
+          animationTriggers.push(
+            gsap.to(row, {
+              scale: scaleForCard(index, row, rows),
+              ease: "none",
+              scrollTrigger: getAnimationTrigger(),
+            })
+          );
+          animationTriggers.push(
+            gsap.fromTo(
+              details,
+              { y: 14 },
+              { y: -10, ease: "none", scrollTrigger: getAnimationTrigger() }
+            )
+          );
+        });
+
+        return () => {
+          animationTriggers.forEach((animation) => {
+            animation.scrollTrigger?.kill();
+            animation.kill();
+          });
+        };
+      }
+    );
+
+    return () => {
+      media.revert();
+    };
+  }, [allProjectsPage]);
 
   const handleEnter = (event) => {
     if (!motionEnabled) return;
@@ -143,8 +209,6 @@ export default function Works() {
     const rect = cardRects.current.get(card) || card.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
-    card.style.setProperty("--image-x", `${x * 10}px`);
-    card.style.setProperty("--image-y", `${y * 10}px`);
     card.style.setProperty("--card-rotate-x", `${y * -4.5}deg`);
     card.style.setProperty("--card-rotate-y", `${x * 5.5}deg`);
     card.style.setProperty("--spotlight-x", `${(x + 0.5) * 100}%`);
@@ -154,8 +218,6 @@ export default function Works() {
   const resetMove = (event) => {
     const card = event.currentTarget;
     cardRects.current.delete(card);
-    card.style.setProperty("--image-x", "0px");
-    card.style.setProperty("--image-y", "0px");
     card.style.setProperty("--card-lift", "0px");
     card.style.setProperty("--card-rotate-x", "0deg");
     card.style.setProperty("--card-rotate-y", "0deg");
@@ -163,52 +225,187 @@ export default function Works() {
     card.style.setProperty("--spotlight-y", "50%");
   };
 
-  return (
-    <section ref={worksSection} className="works">
-      <div className="works-shell site-container">
-        <div className="works-heading">
-          <div><p className="works-eyebrow">Projects</p><h2 className="works-title">Selected work.</h2></div>
-        </div>
+  const moveFeaturedPreview = (event) => {
+    if (!motionEnabled || event.pointerType !== "mouse") return;
+    const row = event.currentTarget;
+    const rect = row.getBoundingClientRect();
+    const scaleX = rect.width / row.offsetWidth || 1;
+    const scaleY = rect.height / row.offsetHeight || 1;
+    caseX.set((event.clientX - rect.left) / scaleX);
+    caseY.set((event.clientY - rect.top) / scaleY);
+  };
 
+  const centerFeaturedPreview = (event) => {
+    if (!motionEnabled) return;
+    const row = event.currentTarget;
+    caseX.set(row.offsetWidth / 2);
+    caseY.set(row.offsetHeight / 2);
+  };
+
+  return (
+    <section className={`works${allProjectsPage ? " works-all-projects" : ""}`}>
+      <div className="works-shell site-container">
+        {allProjectsPage ? (
+          <div className="works-heading works-page-heading">
+            <SpecularButton
+              href="/"
+              variant="secondary"
+              size="md"
+              radius={0}
+              className="projects-back-button interactive"
+            >
+              ← Back to home
+            </SpecularButton>
+            <h1 className="works-title">Explore all my work.</h1>
+            <p className="featured-showcase-description">Web products, business platforms, and experiences shaped around people.</p>
+          </div>
+        ) : (
+          <div className="works-heading works-heading--mobile">
+            <div><p className="works-eyebrow">Projects</p><h2 className="works-title">Selected work.</h2></div>
+          </div>
+        )}
+
+        {!allProjectsPage && <section
+          ref={worksSection}
+          className="featured-showcase"
+          aria-labelledby="featured-projects-title"
+        >
+          <div className="works-heading featured-showcase-heading">
+            <div className="featured-showcase-copy">
+              <p className="works-eyebrow">Featured projects</p>
+              <h2 id="featured-projects-title" className="works-title">
+                Selected work.
+              </h2>
+              <p className="featured-showcase-description">Web products, business platforms, and experiences shaped around people.</p>
+            </div>
+            <SpecularButton
+              href="/projects"
+              variant="secondary"
+              size="lg"
+              radius={0}
+              className="hero-button hero-button-secondary interactive"
+            >
+              View all projects
+            </SpecularButton>
+          </div>
+
+          <div className="featured-project-viewport">
+            <div className="featured-project-list">
+              {featuredWorks.map((work, index) => (
+                <article
+                  className="featured-project-row"
+                  key={work.name}
+                  style={{
+                    "--stack-top": `${96 + index * 16}px`,
+                    "--featured-image-ratio": `${work.image.width} / ${work.image.height}`,
+                  }}
+                  onPointerEnter={moveFeaturedPreview}
+                  onPointerMove={moveFeaturedPreview}
+                  onFocus={centerFeaturedPreview}
+                >
+                  <div className="featured-preview" role="img" aria-label={`Project preview: ${work.name}`}>
+                    <Image
+                      src={work.image}
+                      alt=""
+                      fill
+                      priority={index === 0}
+                      sizes="(min-width: 900px) 48vw, 100vw"
+                    />
+                  </div>
+
+                  <a
+                    href={work.links[0]?.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="featured-mobile-card-link"
+                    aria-label={`View case study: ${work.name}`}
+                  />
+
+                  <div className="featured-project-details">
+                    <span className="featured-project-number">{formatIndex(index)}</span>
+                    <p className="work-kicker featured-project-kicker">
+                      <span>{formatIndex(index)}</span>{work.kicker}
+                    </p>
+                    <h3 className="featured-project-title">{work.name}</h3>
+                    <p className="featured-project-description">{work.description}</p>
+                  </div>
+
+                  <motion.div
+                    className="featured-case-positioner"
+                    style={{ x: caseSpringX, y: caseSpringY }}
+                  >
+                    <div className="featured-case-preview">
+                      <div className="featured-case-image-wrap" aria-hidden="true">
+                        <Image
+                          src={work.image}
+                          alt=""
+                          fill
+                          sizes="(min-width: 900px) 11vw, 100vw"
+                          className="featured-case-image"
+                        />
+                      </div>
+                      <a
+                        href={work.links[0]?.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="featured-case-link"
+                        aria-label={`View case study: ${work.name}`}
+                      >
+                        <span>View case</span>
+                        <span aria-hidden="true">&rarr;</span>
+                      </a>
+                    </div>
+                  </motion.div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>}
+
+        <div
+          id="all-projects"
+          className={`works-groups${allProjectsPage ? " is-visible" : ""}`}
+        >
         {workGroups.map((group) => (
           <div key={group.key} className="works-group">
-            <div className="works-group-heading">
+            {!allProjectsPage && <div className="works-group-heading">
               <div>
                 <p className="works-group-eyebrow">{group.eyebrow}</p>
               </div>
               <p>{group.description}</p>
-            </div>
+            </div>}
             <div className="works-grid">
-              {group.items.map((work, index) => (
+              {group.items.map(({ work, index: projectIndex }) => (
                 <motion.a
                   key={work.name}
                   href={work.links[0]?.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="work-card interactive"
-                  style={{ "--reveal-delay": `${index * 55}ms` }}
+                  style={{
+                    "--reveal-delay": `${projectIndex * 55}ms`,
+                    "--image-position": work.imagePosition || "center",
+                    "--card-aspect-ratio": `${work.image.width} / ${work.image.height}`,
+                  }}
                   initial={motionEnabled ? { opacity: 0, y: 36, filter: "blur(7px)" } : false}
                   whileInView={motionEnabled ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
                   viewport={{ once: true, amount: 0.18 }}
-                  transition={{ duration: 0.72, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.72, delay: projectIndex * 0.06, ease: [0.22, 1, 0.36, 1] }}
                   onPointerEnter={handleEnter}
                   onPointerMove={handleMove}
                   onPointerLeave={resetMove}
                 >
                   <div className="work-card-inner">
+                    <Image
+                      src={work.image}
+                      alt={work.name}
+                      fill
+                      sizes="(max-width: 900px) 90vw, 30vw"
+                      className="work-image"
+                    />
                     <div className="work-copy">
-                      <p className="work-kicker"><span>{formatIndex(index)}</span>{work.kicker}</p>
+                      <p className="work-kicker"><span>{formatIndex(projectIndex)}</span>{work.kicker}</p>
                       <h3 className="work-title">{work.name}</h3>
-                    </div>
-                    <div className="work-media">
-                      <div className="laptop-frame">
-                        <div className="laptop-screen-shell">
-                          <div className="laptop-topbar"><span></span><span></span><span></span></div>
-                          <div className="laptop-camera"></div>
-                          <Image src={work.image} alt={work.name} fill sizes="(max-width: 900px) 90vw, 30vw" className="work-image" />
-                        </div>
-                        <div className="laptop-base"><div className="laptop-trackpad"></div></div>
-                      </div>
                     </div>
                   </div>
                 </motion.a>
@@ -216,6 +413,7 @@ export default function Works() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );

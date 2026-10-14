@@ -41,9 +41,9 @@ export default function Portfolio() {
           <section id="home">
             <Hero isLoading={isLoading} />
           </section>
-          <Reveal id="works" direction="left" delay={0.04}>
+          <div id="works">
             <Works />
-          </Reveal>
+          </div>
           <Reveal id="about" direction="right" delay={0.06}>
             <About />
           </Reveal>

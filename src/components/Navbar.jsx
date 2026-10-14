@@ -6,10 +6,10 @@ import logoMark from "../assets/icons/nithin-logo.svg";
 import SpecularButton from "./SpecularButton";
 
 const links = [
-  ["About", "#about"],
-  ["Skills", "#skills"],
-  ["Work", "#works"],
-  ["Contact", "#contact"],
+  ["About", "/#about"],
+  ["Skills", "/#skills"],
+  ["Work", "/#works"],
+  ["Contact", "/#contact"],
 ];
 
 export default function Navbar() {
@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <nav className="navbar" onKeyDown={(event) => event.key === "Escape" && closeMenu()}>
       <div className="nav-shell site-container">
-        <a href="#home" className="logo" onClick={closeMenu}>
+        <a href="/#home" className="logo" onClick={closeMenu}>
           <Image src={logoMark} alt="Nithin Subhash logo" className="logo-mark" priority />
         </a>
         <div className="nav-actions">

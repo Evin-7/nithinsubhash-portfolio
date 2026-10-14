@@ -5,7 +5,10 @@ export default function Highlights() {
         <div className="highlights-intro">
           <div className="highlights-copy">
             <p className="highlights-eyebrow">What I Do</p>
-            <h2 className="highlights-title">UI/UX design with a user-first product mindset.</h2>
+            <h2 className="highlights-title">
+              UI/UX design with a user-first<br />
+              product mindset.
+            </h2>
             <p className="highlights-text">
               I&apos;m Nithin Subhash, a UI/UX Designer creating intuitive, user-centered experiences through thoughtful visual design, clear interactions, and practical solutions for web, mobile, and enterprise products.
             </p>
