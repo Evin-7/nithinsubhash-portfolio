@@ -9,7 +9,8 @@ import SpecularButton from "../components/SpecularButton";
 import agsyba from "../assets/images/nithin/agsyba.png";
 import abezauto from "../assets/images/nithin/abezauto-showcase.png";
 import call2day from "../assets/images/nithin/call2day.png";
-import elateChat from "../assets/images/nithin/elate-chat-cover.webp";
+import elateChat from "../assets/images/nithin/elate-chat-cover.png";
+import elateTime from "../assets/images/nithin/elate-time-cover.png";
 import hrms from "../assets/images/nithin/hrms.png";
 import coworkKerala from "../assets/images/nithin/cowork-kerala.png";
 import eInvoicing from "../assets/images/nithin/e-invoicing.png";
@@ -26,6 +27,15 @@ const works = [
     kicker: "E-commerce Website",
     year: "Featured",
     description: "A modern fashion storefront for exploring new collections and shopping across web and mobile.",
+  },
+  {
+    name: "Elate Time",
+    type: "mobile",
+    links: [{ label: "Visit site", href: "https://elatetime.com/" }],
+    image: elateTime,
+    kicker: "Mobile App",
+    year: "Featured",
+    description: "A smart attendance and workforce management app for tracking time, teams, and daily operations.",
   },
   {
     name: "AbeZauto",
@@ -46,15 +56,6 @@ const works = [
     description: "A home-services website for exploring maintenance options and requesting help with everyday repairs.",
   },
   {
-    name: "Elate Chat",
-    type: "mobile",
-    links: [{ label: "Dribbble", href: "https://dribbble.com/shots/27632796-Elate-Chat-A-Focused-Community-Communication-Experience" }],
-    image: elateChat,
-    kicker: "Mobile App",
-    year: "Featured",
-    description: "A mobile app where teams and communities connect through focused channels and timely broadcast updates.",
-  },
-  {
     name: "Modern HRMS Website Design",
     links: [{ label: "Visit site", href: "https://hrms.ae/" }],
     image: hrms,
@@ -62,6 +63,15 @@ const works = [
     kicker: "Web Design",
     year: "Featured",
     description: "A UAE-focused HR platform for managing payroll, leave, recruitment, and attendance in one place.",
+  },
+  {
+    name: "Elate Chat",
+    type: "mobile",
+    links: [{ label: "Dribbble", href: "https://dribbble.com/shots/27632796-Elate-Chat-A-Focused-Community-Communication-Experience" }],
+    image: elateChat,
+    kicker: "Mobile App",
+    year: "Featured",
+    description: "A focused community communication app for connecting through channels and timely broadcast updates.",
   },
   {
     name: "Cowork Kerala",
@@ -106,7 +116,10 @@ const works = [
   },
 ];
 
-const featuredWorks = works.slice(0, 5);
+const featuredWorks = [
+  ...works.slice(0, 5),
+  works.find((work) => work.name === "Cowork Kerala"),
+];
 const indexedWorks = works.map((work, index) => ({ work, index }));
 
 const workGroups = [
@@ -248,7 +261,7 @@ export default function Works({ allProjectsPage = false }) {
         {allProjectsPage ? (
           <div className="works-heading works-page-heading">
             <SpecularButton
-              href="/"
+              href="/?skipLoader=1"
               variant="secondary"
               size="md"
               radius={0}
@@ -349,10 +362,9 @@ export default function Works({ allProjectsPage = false }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="featured-case-link"
-                        aria-label={`View case study: ${work.name}`}
+                        aria-label={`View project: ${work.name}`}
                       >
-                        <span>View case</span>
-                        <span aria-hidden="true">&rarr;</span>
+                        <span>View project</span>
                       </a>
                     </div>
                   </motion.div>

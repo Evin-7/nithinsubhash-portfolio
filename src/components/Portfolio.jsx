@@ -15,8 +15,8 @@ import Highlights from "../views/Highlights";
 import Skills from "../views/Skills";
 import Works from "../views/Works";
 
-export default function Portfolio() {
-  const [isLoading, setIsLoading] = useState(true);
+export default function Portfolio({ skipInitialLoader = false }) {
+  const [isLoading, setIsLoading] = useState(!skipInitialLoader);
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -28,6 +28,12 @@ export default function Portfolio() {
 
     return () => window.cancelAnimationFrame(frameId);
   }, []);
+
+  useEffect(() => {
+    if (!skipInitialLoader) return;
+
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.hash}`);
+  }, [skipInitialLoader]);
 
   return (
     <div className="app">
